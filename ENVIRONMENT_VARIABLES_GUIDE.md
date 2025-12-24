@@ -202,8 +202,9 @@ SMTP_SECURE=false
 
 **Your Current Value**:
 ```
-AI_API_KEY=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
+AI_API_KEY=sk-proj-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
+**⚠️ Note**: Your actual API key was exposed - regenerate it at https://platform.openai.com/api-keys
 
 **How to Get It**:
 1. Go to [OpenAI Platform](https://platform.openai.com/)
