@@ -46,6 +46,14 @@
   line-height: 1.6;
 }
 
+.contact-subdetail {
+  font-size: 0.9rem;
+  opacity: 0.8;
+  color: white;
+  margin-top: 5px;
+  display: block;
+}
+
 .contact-info-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));

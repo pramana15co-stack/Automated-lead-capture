@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react';
 import LeadCaptureForm from './LeadCaptureForm';
 import Chatbot from './Chatbot';
 import ContactSection from './ContactSection';
+import Logo from './Logo';
+import Footer from './Footer';
+import TrustBadges from './TrustBadges';
 import './LandingPage.css';
 
 /**
@@ -30,7 +33,7 @@ const LandingPage = () => {
       <nav className="navbar">
         <div className="container">
           <div className="nav-content">
-            <div className="logo">Pramana15</div>
+            <Logo size="medium" />
             <div className="nav-links">
               <a href="#services" className="nav-link">Services</a>
               <a href="#testimonials" className="nav-link">Testimonials</a>
@@ -49,7 +52,7 @@ const LandingPage = () => {
         <div className="container">
           <div className="hero-content">
             <div className="hero-badge">
-              <span>✨ Trusted by Coaches Worldwide</span>
+              <span>✨ Trusted by Coaches Worldwide | Based in Jaipur, Rajasthan, India</span>
             </div>
             <h1 className="hero-headline">
               Transform Your Coaching Business
@@ -58,7 +61,9 @@ const LandingPage = () => {
             <p className="hero-subheadline">
               Join successful coaches from the US, UK, Australia, and beyond who've 
               transformed their businesses with our proven lead capture and automation system. 
-              Book more clients, automate follow-ups, and grow your coaching practice.
+              Built in Jagatpura, Jaipur, Rajasthan - serving clients globally with world-class 
+              technology and exceptional service. Book more clients, automate follow-ups, 
+              and grow your coaching practice.
             </p>
             <div className="hero-cta-group">
               <button 
@@ -242,8 +247,14 @@ const LandingPage = () => {
         </div>
       </section>
 
+      {/* Trust Badges Section */}
+      <TrustBadges />
+
       {/* Contact Section */}
       <ContactSection />
+
+      {/* Footer */}
+      <Footer />
 
       {/* Chatbot */}
       <Chatbot />

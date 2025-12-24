@@ -26,6 +26,14 @@ const ContactSection = () => {
               <div className="contact-icon">🏢</div>
               <h3>Company</h3>
               <p className="contact-detail">Pramana15</p>
+              <p className="contact-subdetail">Established 2020</p>
+            </div>
+            
+            <div className="contact-card">
+              <div className="contact-icon">📍</div>
+              <h3>Location</h3>
+              <p className="contact-detail">Jagatpura, Jaipur</p>
+              <p className="contact-subdetail">Rajasthan, India</p>
             </div>
             
             <div className="contact-card">
@@ -38,6 +46,7 @@ const ContactSection = () => {
               >
                 pramana15.co@gmail.com
               </a>
+              <p className="contact-subdetail">Response within 24 hours</p>
             </div>
             
             <div className="contact-card">
@@ -48,6 +57,7 @@ const ContactSection = () => {
                 <span className="country-tag">🇺🇸 USA</span>
                 <span className="country-tag">🇬🇧 UK</span>
                 <span className="country-tag">🇦🇺 Australia</span>
+                <span className="country-tag">🇨🇦 Canada</span>
                 <span className="country-tag">🌎 Global</span>
               </div>
             </div>
