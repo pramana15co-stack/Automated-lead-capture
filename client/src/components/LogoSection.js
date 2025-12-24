@@ -1,5 +1,5 @@
 import React from 'react';
-import './LogoSection.css';
+// CSS imported in _app.js for Next.js compatibility
 
 /**
  * Logo Section Component

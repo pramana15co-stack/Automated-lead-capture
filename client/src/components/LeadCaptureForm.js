@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { getApiUrl } from '../config/api';
-import './LeadCaptureForm.css';
+// CSS imported in _app.js for Next.js compatibility
 
 /**
  * Lead Capture Form Component

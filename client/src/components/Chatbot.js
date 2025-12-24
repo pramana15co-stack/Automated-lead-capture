@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import axios from 'axios';
 import { getApiUrl } from '../config/api';
-import './Chatbot.css';
+// CSS imported in _app.js for Next.js compatibility
 
 /**
  * AI Chatbot Component

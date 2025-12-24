@@ -7,7 +7,7 @@ import Footer from './Footer';
 import TrustBadges from './TrustBadges';
 import CaseStudy from './CaseStudy';
 import LogoSection from './LogoSection';
-import './LandingPage.css';
+// CSS imported in _app.js for Next.js compatibility
 
 /**
  * Enhanced Professional Landing Page

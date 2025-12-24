@@ -1,5 +1,5 @@
 import React from 'react';
-import './CaseStudy.css';
+// CSS imported in _app.js for Next.js compatibility
 
 /**
  * Case Study Component

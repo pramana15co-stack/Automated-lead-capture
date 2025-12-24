@@ -1,5 +1,5 @@
 import React from 'react';
-import './ContactSection.css';
+// CSS imported in _app.js for Next.js compatibility
 
 /**
  * Contact Section Component

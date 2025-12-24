@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { getApiUrl } from '../config/api';
-import './AdminDashboard.css';
+// CSS imported in _app.js for Next.js compatibility
 
 /**
  * Admin Dashboard Component

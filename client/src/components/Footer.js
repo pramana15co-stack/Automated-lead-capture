@@ -1,6 +1,6 @@
 import React from 'react';
 import Logo from './Logo';
-import './Footer.css';
+// CSS imported in _app.js for Next.js compatibility
 
 /**
  * Professional Footer Component
