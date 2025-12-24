@@ -18,8 +18,8 @@ const Footer = () => {
             <p className="footer-description">
               Pramana15 delivers enterprise-grade lead capture and automation solutions 
               built by experienced full-stack developers. Production-ready systems trusted 
-              by coaches and businesses worldwide. Based in Jaipur, Rajasthan, serving 
-              clients globally with professional development services.
+              by coaches and businesses worldwide. Serving clients globally with professional 
+              development services.
             </p>
             <div className="footer-social">
               <span className="social-label">Follow Us:</span>
@@ -55,10 +55,10 @@ const Footer = () => {
             <h4 className="footer-heading">Contact Info</h4>
             <ul className="footer-contact">
               <li>
-                <span className="contact-icon">📍</span>
+                <span className="contact-icon">🌍</span>
                 <div>
-                  <strong>Address</strong>
-                  <p>Jagatpura, Jaipur<br />Rajasthan, India</p>
+                  <strong>Service Area</strong>
+                  <p>Global - Worldwide Coverage</p>
                 </div>
               </li>
               <li>
@@ -82,7 +82,7 @@ const Footer = () => {
         <div className="footer-bottom">
           <div className="footer-bottom-content">
             <p className="copyright">
-              © {currentYear} Pramana15. All rights reserved. | Registered in Jaipur, Rajasthan, India
+              © {currentYear} Pramana15. All rights reserved.
             </p>
             <div className="footer-badges">
               <span className="footer-badge">🔒 Secure</span>

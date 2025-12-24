@@ -30,10 +30,10 @@ const ContactSection = () => {
             </div>
             
             <div className="contact-card">
-              <div className="contact-icon">📍</div>
-              <h3>Location</h3>
-              <p className="contact-detail">Jagatpura, Jaipur</p>
-              <p className="contact-subdetail">Rajasthan, India</p>
+              <div className="contact-icon">🌍</div>
+              <h3>Global Service</h3>
+              <p className="contact-detail">Worldwide Coverage</p>
+              <p className="contact-subdetail">Serving clients globally</p>
             </div>
             
             <div className="contact-card">

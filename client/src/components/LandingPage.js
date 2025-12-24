@@ -67,7 +67,7 @@ const LandingPage = () => {
             </h1>
             <p className="hero-subheadline">
               A complete, production-ready automation system that captures leads, sends automated emails, 
-              and integrates with AI chatbots. Built by experienced developers in Jaipur, Rajasthan, 
+              and integrates with AI chatbots. Built by experienced developers, 
               serving clients across the US, UK, Australia, and globally.
             </p>
             <div className="hero-cta-group">
