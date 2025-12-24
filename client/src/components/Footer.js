@@ -24,9 +24,9 @@ const Footer = () => {
             <div className="footer-social">
               <span className="social-label">Follow Us:</span>
               <div className="social-links">
-                <a href="https://linkedin.com/company/pramana15" target="_blank" rel="noopener noreferrer" className="social-link" aria-label="LinkedIn">LinkedIn</a>
-                <a href="https://twitter.com/pramana15" target="_blank" rel="noopener noreferrer" className="social-link" aria-label="Twitter">Twitter</a>
-                <a href="https://facebook.com/pramana15" target="_blank" rel="noopener noreferrer" className="social-link" aria-label="Facebook">Facebook</a>
+                <a href="https://www.linkedin.com/company/pramana15" target="_blank" rel="noopener noreferrer" className="social-link" aria-label="LinkedIn">LinkedIn</a>
+                <a href="https://www.twitter.com/pramana15" target="_blank" rel="noopener noreferrer" className="social-link" aria-label="Twitter">Twitter</a>
+                <a href="https://www.facebook.com/pramana15" target="_blank" rel="noopener noreferrer" className="social-link" aria-label="Facebook">Facebook</a>
               </div>
             </div>
           </div>
@@ -34,10 +34,10 @@ const Footer = () => {
           <div className="footer-section">
             <h4 className="footer-heading">Company</h4>
             <ul className="footer-links">
-              <li><a href="#services">Services</a></li>
-              <li><a href="#testimonials">Testimonials</a></li>
-              <li><a href="#contact">Contact Us</a></li>
-              <li><a href="#lead-form">Get Started</a></li>
+              <li><a href="/#features">Services</a></li>
+              <li><a href="/#testimonials">Testimonials</a></li>
+              <li><a href="/#contact">Contact Us</a></li>
+              <li><a href="/#lead-form">Get Started</a></li>
             </ul>
           </div>
 
