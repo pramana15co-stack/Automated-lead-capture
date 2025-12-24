@@ -95,7 +95,16 @@ const LeadCaptureForm = () => {
     setSubmitStatus(null);
 
     try {
-      const response = await axios.post(getApiUrl('/api/lead'), formData);
+      const apiUrl = getApiUrl('/api/lead');
+      console.log('Submitting to:', apiUrl);
+      console.log('Form data:', formData);
+      
+      const response = await axios.post(apiUrl, formData, {
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        timeout: 30000 // 30 second timeout
+      });
 
       if (response.data && response.data.success) {
         setSubmitStatus('success');

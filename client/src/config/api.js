@@ -23,7 +23,15 @@ export const getApiUrl = (endpoint) => {
     return `${API_BASE_URL}${cleanEndpoint}`;
   }
   
-  return cleanEndpoint;
+  // For Next.js, API routes are on the same domain
+  // In browser, use relative path; in server, use full URL
+  if (typeof window !== 'undefined') {
+    // Client-side: use relative path
+    return cleanEndpoint;
+  } else {
+    // Server-side: construct full URL (if needed)
+    return cleanEndpoint;
+  }
 };
 
 export default API_BASE_URL;
