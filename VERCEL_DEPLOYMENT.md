@@ -77,8 +77,8 @@ vercel
 | `SMTP_PASSWORD` | `augkuougdzpjpfyq` | Same as above |
 | `EMAIL_FROM_NAME` | `Pramana15` | Display name |
 | `OWNER_EMAIL` | `pramana15.co@gmail.com` | Notification email |
-| `AI_API_KEY` | `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` | OpenAI API Key |
-| `OPENAI_API_KEY` | `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` | Same as above |
+| `AI_API_KEY` | `{your_openai_api_key}` | OpenAI API Key |
+| `OPENAI_API_KEY` | `{your_openai_api_key}` | Same as above |
 | `OPENAI_MODEL` | `gpt-3.5-turbo` | Model to use |
 
 **Important for `GOOGLE_SHEETS_CREDENTIALS`**:
