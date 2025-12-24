@@ -6,6 +6,7 @@ import Logo from './Logo';
 import Footer from './Footer';
 import TrustBadges from './TrustBadges';
 import CaseStudy from './CaseStudy';
+import LogoSection from './LogoSection';
 import './LandingPage.css';
 
 /**
@@ -135,6 +136,9 @@ const LandingPage = () => {
           </div>
         </div>
       </section>
+
+      {/* Technology & Certification Logos */}
+      <LogoSection />
 
       {/* Features Section */}
       <section id="features" className="features">
