@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import LeadCaptureForm from './LeadCaptureForm';
 import Chatbot from './Chatbot';
 import './LandingPage.css';
@@ -8,10 +8,7 @@ import './LandingPage.css';
  * Main conversion-focused landing page with headline, benefits, CTA, and form
  */
 const LandingPage = () => {
-  const [showForm, setShowForm] = useState(false);
-
   const handleCTAClick = () => {
-    setShowForm(true);
     // Scroll to form smoothly
     setTimeout(() => {
       const formElement = document.getElementById('lead-form');
