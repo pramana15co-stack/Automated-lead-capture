@@ -201,14 +201,22 @@ const LeadCaptureForm = () => {
       {/* Success Message */}
       {submitStatus === 'success' && (
         <div className="alert alert-success">
-          ✅ Thank you! We've received your information and will contact you within 24 hours.
+          <div className="alert-icon">✅</div>
+          <div className="alert-content">
+            <strong>Success!</strong>
+            <p>Thank you! We've received your information and will contact you within 24 hours.</p>
+          </div>
         </div>
       )}
 
       {/* Error Message */}
       {submitStatus === 'error' && errors.submit && (
         <div className="alert alert-error">
-          ❌ {errors.submit}
+          <div className="alert-icon">❌</div>
+          <div className="alert-content">
+            <strong>Error</strong>
+            <p>{errors.submit}</p>
+          </div>
         </div>
       )}
     </form>
