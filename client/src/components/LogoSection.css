@@ -122,30 +122,109 @@
   color: #667eea;
 }
 
-/* Specific logo styles */
-.nextjs-logo svg {
-  fill: #000;
-}
-
-.react-logo svg {
-  fill: #61DAFB;
-}
-
-.nodejs-logo svg {
-  fill: #339933;
-}
-
-.vercel-logo svg {
-  fill: #000;
-}
-
-.google-logo svg {
+/* Logo Icon Styles */
+.logo-text-icon {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #1f2937;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   height: 100%;
 }
 
-.openai-logo svg {
-  fill: #10A37F;
+.logo-react-icon {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.react-circle {
+  width: 35px;
+  height: 35px;
+  border: 3px solid #61DAFB;
+  border-radius: 50%;
+  position: absolute;
+}
+
+.react-orbit {
+  width: 50px;
+  height: 50px;
+  border: 2px solid #61DAFB;
+  border-radius: 50%;
+  position: absolute;
+  opacity: 0.6;
+}
+
+.logo-vercel-icon {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vercel-triangle {
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom: 35px solid #000;
+  position: relative;
+}
+
+.vercel-triangle::after {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: -15px;
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 25px solid white;
+}
+
+.logo-google-icon {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.google-g {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #4285F4 0%, #34A853 50%, #FBBC05 75%, #EA4335 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 700;
+  font-size: 1.5rem;
+  font-family: 'Google Sans', Arial, sans-serif;
+}
+
+.logo-openai-icon {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.openai-sparkle {
+  font-size: 2rem;
+  background: linear-gradient(135deg, #10A37F 0%, #0d8a6d 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .cert-icon {
