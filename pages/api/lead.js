@@ -78,11 +78,23 @@ export default async function handler(req, res) {
       }
     } catch (sheetsError) {
       logError('Google Sheets save error', sheetsError);
+      
+      // Provide more helpful error messages
+      let errorMessage = 'Failed to save lead to Google Sheets. Please try again or contact support.';
+      
+      if (sheetsError.message?.includes('credentials')) {
+        errorMessage = 'Google Sheets is not properly configured. Please contact support.';
+      } else if (sheetsError.message?.includes('permission') || sheetsError.message?.includes('access')) {
+        errorMessage = 'Google Sheets access denied. Please ensure the service account has proper permissions.';
+      } else if (sheetsError.message?.includes('not found') || sheetsError.message?.includes('404')) {
+        errorMessage = 'Google Sheet not found. Please check the sheet ID configuration.';
+      }
+      
       // Return error so user knows it failed
       logRequest(req.method, req.url, 500, Date.now() - startTime);
       return res.status(500).json({
         success: false,
-        error: 'Failed to save lead to Google Sheets. Please try again or contact support.',
+        error: errorMessage,
         details: process.env.NODE_ENV === 'development' ? sheetsError.message : undefined
       });
     }

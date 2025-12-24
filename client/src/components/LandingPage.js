@@ -6,7 +6,6 @@ import Logo from './Logo';
 import Footer from './Footer';
 import TrustBadges from './TrustBadges';
 import CaseStudy from './CaseStudy';
-import LogoSection from './LogoSection';
 // CSS imported in _app.js for Next.js compatibility
 
 /**
@@ -115,8 +114,6 @@ const LandingPage = () => {
         </div>
       </section>
 
-      {/* Technology & Certification Logos */}
-      <LogoSection />
 
       {/* Features Section */}
       <section id="features" className="features">
@@ -223,11 +220,6 @@ const LandingPage = () => {
               <div className="portfolio-content">
                 <h3>Lead Capture System</h3>
                 <p>Complete automation system with form validation, email automation, and Google Sheets integration.</p>
-                <div className="portfolio-tech">
-                  <span className="tech-tag">Next.js</span>
-                  <span className="tech-tag">Google Sheets</span>
-                  <span className="tech-tag">Node.js</span>
-                </div>
               </div>
             </div>
             <div className="portfolio-card">
@@ -237,11 +229,6 @@ const LandingPage = () => {
               <div className="portfolio-content">
                 <h3>AI Chatbot Integration</h3>
                 <p>Intelligent chatbot with OpenAI GPT integration, rate limiting, and smart fallback responses.</p>
-                <div className="portfolio-tech">
-                  <span className="tech-tag">OpenAI API</span>
-                  <span className="tech-tag">React</span>
-                  <span className="tech-tag">Rate Limiting</span>
-                </div>
               </div>
             </div>
             <div className="portfolio-card">
@@ -251,11 +238,6 @@ const LandingPage = () => {
               <div className="portfolio-content">
                 <h3>Email Automation</h3>
                 <p>Professional email system with HTML templates, duplicate prevention, and SMTP integration.</p>
-                <div className="portfolio-tech">
-                  <span className="tech-tag">Nodemailer</span>
-                  <span className="tech-tag">SMTP</span>
-                  <span className="tech-tag">Templates</span>
-                </div>
               </div>
             </div>
           </div>
@@ -354,44 +336,6 @@ const LandingPage = () => {
       {/* Case Study Section */}
       <CaseStudy />
 
-      {/* Technology Stack */}
-      <section className="tech-stack">
-        <div className="container">
-          <div className="section-header">
-            <span className="section-label">Built With</span>
-            <h2 className="section-title">Modern Technology Stack</h2>
-            <p className="section-subtitle">
-              Industry-standard technologies for reliability and performance
-            </p>
-          </div>
-          <div className="tech-grid">
-            <div className="tech-item">
-              <div className="tech-name">Next.js</div>
-              <div className="tech-desc">React Framework</div>
-            </div>
-            <div className="tech-item">
-              <div className="tech-name">Node.js</div>
-              <div className="tech-desc">Backend Runtime</div>
-            </div>
-            <div className="tech-item">
-              <div className="tech-name">Google Sheets API</div>
-              <div className="tech-desc">Data Storage</div>
-            </div>
-            <div className="tech-item">
-              <div className="tech-name">OpenAI GPT</div>
-              <div className="tech-desc">AI Chatbot</div>
-            </div>
-            <div className="tech-item">
-              <div className="tech-name">Vercel</div>
-              <div className="tech-desc">Hosting Platform</div>
-            </div>
-            <div className="tech-item">
-              <div className="tech-name">SMTP</div>
-              <div className="tech-desc">Email Service</div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Lead Capture Form Section */}
       <section id="lead-form" className="lead-form-section">

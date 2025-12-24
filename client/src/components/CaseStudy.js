@@ -64,16 +64,6 @@ const CaseStudy = () => {
               </ul>
             </div>
 
-            <div className="case-study-tech">
-              <h4>Technologies Used</h4>
-              <div className="tech-badges">
-                <span className="tech-badge">Next.js</span>
-                <span className="tech-badge">Google Sheets API</span>
-                <span className="tech-badge">OpenAI GPT</span>
-                <span className="tech-badge">Email Automation</span>
-                <span className="tech-badge">Vercel Deployment</span>
-              </div>
-            </div>
           </div>
         </div>
       </div>
