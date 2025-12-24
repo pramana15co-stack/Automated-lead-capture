@@ -18,9 +18,6 @@ const LandingPage = () => {
 
   useEffect(() => {
     setIsVisible(true);
-    // Animate stats on scroll
-    const timer = setTimeout(() => setStatsVisible(true), 500);
-    return () => clearTimeout(timer);
   }, []);
 
   const handleCTAClick = () => {
