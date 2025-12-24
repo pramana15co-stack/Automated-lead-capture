@@ -16,9 +16,10 @@ const Footer = () => {
           <div className="footer-section">
             <Logo size="medium" />
             <p className="footer-description">
-              Pramana15 is a leading provider of AI-powered lead capture and automation 
-              solutions for coaches worldwide. Based in Jaipur, Rajasthan, we serve clients 
-              across the globe with cutting-edge technology and exceptional service.
+              Pramana15 delivers enterprise-grade lead capture and automation solutions 
+              built by experienced full-stack developers. Production-ready systems trusted 
+              by coaches and businesses worldwide. Based in Jaipur, Rajasthan, serving 
+              clients globally with professional development services.
             </p>
             <div className="footer-social">
               <span className="social-label">Follow Us:</span>

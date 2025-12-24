@@ -5,6 +5,7 @@ import ContactSection from './ContactSection';
 import Logo from './Logo';
 import Footer from './Footer';
 import TrustBadges from './TrustBadges';
+import CaseStudy from './CaseStudy';
 import './LandingPage.css';
 
 /**
@@ -367,6 +368,9 @@ const LandingPage = () => {
           </div>
         </div>
       </section>
+
+      {/* Case Study Section */}
+      <CaseStudy />
 
       {/* Technology Stack */}
       <section className="tech-stack">

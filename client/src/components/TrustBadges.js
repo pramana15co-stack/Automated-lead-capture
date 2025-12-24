@@ -15,36 +15,36 @@ const TrustBadges = () => {
             <div className="trust-badge">
               <div className="badge-icon">🔒</div>
               <div className="badge-text">
-                <strong>SSL Secured</strong>
-                <span>256-bit Encryption</span>
+                <strong>Enterprise Security</strong>
+                <span>256-bit SSL Encryption</span>
               </div>
             </div>
             <div className="trust-badge">
               <div className="badge-icon">✅</div>
               <div className="badge-text">
                 <strong>GDPR Compliant</strong>
-                <span>Data Protection</span>
+                <span>Full Data Protection</span>
               </div>
             </div>
             <div className="trust-badge">
               <div className="badge-icon">🏆</div>
               <div className="badge-text">
-                <strong>ISO Certified</strong>
-                <span>Quality Assured</span>
+                <strong>Production-Ready</strong>
+                <span>Enterprise Grade Code</span>
               </div>
             </div>
             <div className="trust-badge">
-              <div className="badge-icon">💳</div>
+              <div className="badge-icon">💼</div>
               <div className="badge-text">
-                <strong>Secure Payments</strong>
-                <span>PCI DSS Compliant</span>
+                <strong>Business Grade</strong>
+                <span>Trusted by Professionals</span>
               </div>
             </div>
             <div className="trust-badge">
               <div className="badge-icon">🌐</div>
               <div className="badge-text">
-                <strong>Global Reach</strong>
-                <span>500+ Clients Worldwide</span>
+                <strong>Global Deployment</strong>
+                <span>Serving Clients Worldwide</span>
               </div>
             </div>
             <div className="trust-badge">
@@ -52,6 +52,20 @@ const TrustBadges = () => {
               <div className="badge-text">
                 <strong>4.9/5 Rating</strong>
                 <span>98% Client Satisfaction</span>
+              </div>
+            </div>
+            <div className="trust-badge">
+              <div className="badge-icon">⚡</div>
+              <div className="badge-text">
+                <strong>Lightning Fast</strong>
+                <span>Optimized Performance</span>
+              </div>
+            </div>
+            <div className="trust-badge">
+              <div className="badge-icon">📚</div>
+              <div className="badge-text">
+                <strong>Fully Documented</strong>
+                <span>Complete Documentation</span>
               </div>
             </div>
           </div>
