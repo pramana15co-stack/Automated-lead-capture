@@ -1,8 +1,8 @@
 /* Contact Section Styles */
 
 .contact-section {
-  padding: 100px 20px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 100px 40px;
+  background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 50%, #EC4899 100%);
   color: white;
   position: relative;
   overflow: hidden;
@@ -22,8 +22,9 @@
 .contact-content {
   position: relative;
   z-index: 1;
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
+  width: 100%;
 }
 
 .contact-header {
