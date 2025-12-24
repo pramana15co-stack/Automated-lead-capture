@@ -24,9 +24,9 @@ const Footer = () => {
             <div className="footer-social">
               <span className="social-label">Follow Us:</span>
               <div className="social-links">
-                <a href="#" className="social-link" aria-label="LinkedIn">LinkedIn</a>
-                <a href="#" className="social-link" aria-label="Twitter">Twitter</a>
-                <a href="#" className="social-link" aria-label="Facebook">Facebook</a>
+                <a href="https://linkedin.com/company/pramana15" target="_blank" rel="noopener noreferrer" className="social-link" aria-label="LinkedIn">LinkedIn</a>
+                <a href="https://twitter.com/pramana15" target="_blank" rel="noopener noreferrer" className="social-link" aria-label="Twitter">Twitter</a>
+                <a href="https://facebook.com/pramana15" target="_blank" rel="noopener noreferrer" className="social-link" aria-label="Facebook">Facebook</a>
               </div>
             </div>
           </div>
@@ -44,10 +44,10 @@ const Footer = () => {
           <div className="footer-section">
             <h4 className="footer-heading">Legal</h4>
             <ul className="footer-links">
-              <li><a href="#privacy">Privacy Policy</a></li>
-              <li><a href="#terms">Terms of Service</a></li>
-              <li><a href="#cookies">Cookie Policy</a></li>
-              <li><a href="#refund">Refund Policy</a></li>
+              <li><a href="/privacy">Privacy Policy</a></li>
+              <li><a href="/terms">Terms of Service</a></li>
+              <li><a href="/cookies">Cookie Policy</a></li>
+              <li><a href="/refund">Refund Policy</a></li>
             </ul>
           </div>
 
