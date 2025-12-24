@@ -1,76 +1,68 @@
-# Quick Start Guide
+# ⚡ Quick Start - Get Running in 10 Minutes
 
-Get up and running in 5 minutes!
+## Fastest Way to Get Everything Working
 
-## Step 1: Install Dependencies
-
+### 1. Install Dependencies (1 min)
 ```bash
-# Install all dependencies
-npm run install-all
+npm install
 ```
 
-## Step 2: Set Up Google Sheets (5 minutes)
+### 2. Get Your Credentials (5 min)
 
-1. **Create Google Sheet**:
-   - Go to [Google Sheets](https://sheets.google.com)
-   - Create a new sheet
-   - Copy the Sheet ID from URL: `https://docs.google.com/spreadsheets/d/SHEET_ID/edit`
+#### A. Google Sheets Service Account
+1. Go to: https://console.cloud.google.com/
+2. Create project → Enable Google Sheets API
+3. Create Service Account → Download JSON
+4. Share your sheet with service account email
 
-2. **Get Service Account**:
-   - Go to [Google Cloud Console](https://console.cloud.google.com)
-   - Create project → Enable Google Sheets API
-   - Create Service Account → Download JSON key
-   - Share your sheet with the service account email
+#### B. Gmail App Password
+1. Go to: https://myaccount.google.com/apppasswords
+2. Generate App Password for "Mail"
+3. Copy 16-character password (remove spaces)
 
-3. **Add to .env**:
-   ```env
-   GOOGLE_SHEET_ID=your_sheet_id_here
-   GOOGLE_SHEETS_CREDENTIALS={"type":"service_account",...}
-   ```
+#### C. OpenAI API Key
+1. Go to: https://platform.openai.com/api-keys
+2. Create new secret key
+3. Copy the key
 
-## Step 3: Set Up Email (2 minutes)
+### 3. Create `.env.local` File (2 min)
 
-**For Gmail**:
-1. Enable 2FA on your Google account
-2. Generate App Password: https://myaccount.google.com/apppasswords
-3. Add to `.env`:
-   ```env
-   SMTP_USER=your_email@gmail.com
-   SMTP_PASSWORD=your_app_password
-   OWNER_EMAIL=your_email@gmail.com
-   ```
+Create file `.env.local` in project root:
 
-## Step 4: Create .env File
-
-```bash
-# Copy example file
-cp env.example .env
-
-# Edit .env and add your credentials
+```env
+GOOGLE_SHEET_ID=1f1FoDZqAxOdsdm6fF9qcAkYD-SY7QZIOkBrMV-I1Hms
+GOOGLE_SHEETS_CREDENTIALS={paste your JSON here}
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_SECURE=false
+SMTP_USER=pramana15.co@gmail.com
+SMTP_PASS=your_app_password_here
+SMTP_PASSWORD=your_app_password_here
+OWNER_EMAIL=pramana15.co@gmail.com
+AI_API_KEY=your_openai_key_here
+OPENAI_API_KEY=your_openai_key_here
+OPENAI_MODEL=gpt-3.5-turbo
 ```
 
-## Step 5: Run the App
-
+### 4. Start Server (1 min)
 ```bash
-# Start both server and client
 npm run dev
 ```
 
-- **Frontend**: http://localhost:3000
-- **Backend**: http://localhost:5000
-- **Admin**: http://localhost:3000/admin
+### 5. Test (1 min)
+1. Open: http://localhost:3000
+2. Submit test form
+3. Check Google Sheet - should see new row
+4. Check email - should receive confirmation
 
-## That's It! 🎉
+### 6. Deploy to Vercel (5 min)
+1. Push to GitHub
+2. Import in Vercel
+3. Add same environment variables
+4. Deploy!
 
-Test it:
-1. Visit http://localhost:3000
-2. Fill out the form
-3. Check Google Sheets - your lead should appear!
-4. Check your email - you should receive notifications!
+---
 
-## Need Help?
+## ✅ Done!
 
-- **Detailed Setup**: See `README.md`
-- **Environment Variables**: See `ENV_SETUP.md`
-- **Deployment**: See `DEPLOYMENT.md`
-
+Your system is now live and capturing leads!
