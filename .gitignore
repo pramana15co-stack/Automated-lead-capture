@@ -34,6 +34,7 @@ Thumbs.db
 credentials.json
 service-account-key.json
 YOUR_CREDENTIALS.md
+YOUR_CONFIG.md
 
 # Vercel
 .vercel
