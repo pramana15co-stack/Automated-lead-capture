@@ -65,8 +65,12 @@ const LeadCaptureForm = () => {
 
     if (!formData.phone.trim()) {
       newErrors.phone = 'Phone number is required';
-    } else if (!/^[\d\s\-+()]+$/.test(formData.phone)) {
-      newErrors.phone = 'Please enter a valid phone number';
+    } else {
+      // Validate phone format - allow digits, spaces, hyphens, plus, and parentheses
+      const phoneRegex = /^[\d\s\-+()]+$/;
+      if (!phoneRegex.test(formData.phone)) {
+        newErrors.phone = 'Please enter a valid phone number';
+      }
     }
 
     if (!formData.service) {
