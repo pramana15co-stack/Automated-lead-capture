@@ -78,8 +78,13 @@ export default async function handler(req, res) {
       }
     } catch (sheetsError) {
       logError('Google Sheets save error', sheetsError);
-      // Don't fail completely - try to send emails anyway
-      logWarn('Continuing despite Sheets error - emails will still be sent');
+      // Return error so user knows it failed
+      logRequest(req.method, req.url, 500, Date.now() - startTime);
+      return res.status(500).json({
+        success: false,
+        error: 'Failed to save lead to Google Sheets. Please try again or contact support.',
+        details: process.env.NODE_ENV === 'development' ? sheetsError.message : undefined
+      });
     }
 
     // Send confirmation email to lead (non-blocking)
