@@ -68,9 +68,10 @@ Please check which of these applies:
 - Check Vercel Function logs for `/api/chat`
 
 **Solutions**:
-- Verify API key: `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`
+- Verify API key is correct in Vercel environment variables
 - Check OpenAI dashboard for credits
 - Test API key directly
+- Make sure API key starts with `sk-proj-` or `sk-`
 
 ---
 
