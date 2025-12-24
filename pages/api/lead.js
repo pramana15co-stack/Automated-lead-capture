@@ -10,7 +10,7 @@ import { validateLeadData } from '../../lib/validation';
 import { saveLead } from '../../lib/googleSheets';
 import { sendEmail } from '../../lib/email';
 import { checkRateLimit, getClientIP } from '../../lib/rateLimiter';
-import { logError, logInfo, logRequest } from '../../lib/logger';
+import { logError, logInfo, logRequest, logWarn } from '../../lib/logger';
 
 export default async function handler(req, res) {
   const startTime = Date.now();

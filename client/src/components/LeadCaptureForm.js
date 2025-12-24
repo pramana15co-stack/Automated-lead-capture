@@ -97,7 +97,7 @@ const LeadCaptureForm = () => {
     try {
       const response = await axios.post(getApiUrl('/api/lead'), formData);
 
-      if (response.data.success) {
+      if (response.data && response.data.success) {
         setSubmitStatus('success');
         // Reset form
         setFormData({
@@ -108,15 +108,33 @@ const LeadCaptureForm = () => {
         });
         // Clear success message after 5 seconds
         setTimeout(() => setSubmitStatus(null), 5000);
+      } else {
+        // Handle unexpected response format
+        setSubmitStatus('error');
+        setErrors({ submit: response.data?.error || response.data?.message || 'Unexpected response from server.' });
       }
     } catch (error) {
       console.error('Form submission error:', error);
       setSubmitStatus('error');
-      if (error.response?.data?.error) {
-        setErrors({ submit: error.response.data.error });
+      
+      // Better error handling
+      let errorMessage = 'Something went wrong. Please try again.';
+      
+      if (error.response) {
+        // Server responded with error
+        errorMessage = error.response.data?.error || error.response.data?.message || errorMessage;
+        console.error('Server error:', error.response.data);
+      } else if (error.request) {
+        // Request made but no response
+        errorMessage = 'Unable to connect to server. Please check your internet connection and try again.';
+        console.error('Network error:', error.request);
       } else {
-        setErrors({ submit: 'Something went wrong. Please try again.' });
+        // Something else happened
+        errorMessage = error.message || errorMessage;
+        console.error('Error:', error.message);
       }
+      
+      setErrors({ submit: errorMessage });
     } finally {
       setIsSubmitting(false);
     }
