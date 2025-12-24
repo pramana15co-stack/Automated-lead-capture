@@ -15,7 +15,6 @@ import LogoSection from './LogoSection';
  */
 const LandingPage = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [statsVisible, setStatsVisible] = useState(false);
 
   useEffect(() => {
     setIsVisible(true);
@@ -81,24 +80,6 @@ const LandingPage = () => {
               <a href="#features" className="btn btn-secondary btn-large">
                 View Features
               </a>
-            </div>
-            <div className={`hero-stats ${statsVisible ? 'fade-in' : ''}`}>
-              <div className="stat-item">
-                <div className="stat-number" data-target="500">0</div>
-                <div className="stat-label">Active Users</div>
-              </div>
-              <div className="stat-item">
-                <div className="stat-number" data-target="10000">0</div>
-                <div className="stat-label">Leads Captured</div>
-              </div>
-              <div className="stat-item">
-                <div className="stat-number" data-target="98">0</div>
-                <div className="stat-label">% Satisfaction</div>
-              </div>
-              <div className="stat-item">
-                <div className="stat-number" data-target="24">0</div>
-                <div className="stat-label">Hour Support</div>
-              </div>
             </div>
           </div>
         </div>
