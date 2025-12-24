@@ -24,8 +24,11 @@ const Footer = () => {
             <div className="footer-social">
               <span className="social-label">Follow Us:</span>
               <div className="social-links">
+                {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
                 <a href="https://www.linkedin.com/company/pramana15" target="_blank" rel="noopener noreferrer" className="social-link" aria-label="LinkedIn">LinkedIn</a>
+                {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
                 <a href="https://www.twitter.com/pramana15" target="_blank" rel="noopener noreferrer" className="social-link" aria-label="Twitter">Twitter</a>
+                {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
                 <a href="https://www.facebook.com/pramana15" target="_blank" rel="noopener noreferrer" className="social-link" aria-label="Facebook">Facebook</a>
               </div>
             </div>
