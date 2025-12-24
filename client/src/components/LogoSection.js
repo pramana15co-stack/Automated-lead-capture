@@ -84,28 +84,66 @@ const LogoSection = () => {
           
           {/* Certification Logos */}
           <div className="logo-category">
-            <h4 className="logo-category-title">Certifications</h4>
+            <h4 className="logo-category-title">Certifications & Standards</h4>
             <div className="logo-items">
               <div className="logo-item">
                 <div className="logo-svg ssl-logo">
-                  <div className="ssl-icon">🔒</div>
+                  <div className="cert-icon">🔒</div>
                 </div>
                 <span className="logo-name">SSL Certified</span>
               </div>
               
               <div className="logo-item">
                 <div className="logo-svg gdpr-logo">
-                  <div className="gdpr-icon">✅</div>
+                  <div className="cert-icon">✅</div>
                 </div>
                 <span className="logo-name">GDPR Compliant</span>
               </div>
               
               <div className="logo-item">
                 <div className="logo-svg iso-logo">
-                  <div className="iso-icon">🏆</div>
+                  <div className="cert-icon">🏆</div>
                 </div>
                 <span className="logo-name">ISO Standard</span>
               </div>
+              
+              <div className="logo-item">
+                <div className="logo-svg pci-logo">
+                  <div className="cert-icon">💳</div>
+                </div>
+                <span className="logo-name">PCI DSS</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Client/Partner Logos Section */}
+        <div className="client-logos-section">
+          <h4 className="client-logos-title">Trusted By</h4>
+          <div className="client-logos-grid">
+            <div className="client-logo-item">
+              <div className="client-logo-circle">BC</div>
+              <span>Business Coaches</span>
+            </div>
+            <div className="client-logo-item">
+              <div className="client-logo-circle">LC</div>
+              <span>Life Coaches</span>
+            </div>
+            <div className="client-logo-item">
+              <div className="client-logo-circle">CC</div>
+              <span>Career Coaches</span>
+            </div>
+            <div className="client-logo-item">
+              <div className="client-logo-circle">EC</div>
+              <span>Executive Coaches</span>
+            </div>
+            <div className="client-logo-item">
+              <div className="client-logo-circle">FC</div>
+              <span>Fitness Coaches</span>
+            </div>
+            <div className="client-logo-item">
+              <div className="client-logo-circle">WC</div>
+              <span>Wellness Coaches</span>
             </div>
           </div>
         </div>

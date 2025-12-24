@@ -148,11 +148,82 @@
   fill: #10A37F;
 }
 
-.ssl-icon,
-.gdpr-icon,
-.iso-icon {
+.cert-icon {
   font-size: 2.5rem;
   display: block;
+}
+
+/* Client Logos Section */
+.client-logos-section {
+  margin-top: 60px;
+  padding-top: 50px;
+  border-top: 2px solid #e5e7eb;
+  text-align: center;
+}
+
+.client-logos-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 40px;
+}
+
+.client-logos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 30px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.client-logo-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  padding: 25px 20px;
+  background: linear-gradient(135deg, #f9fafb 0%, #ffffff 100%);
+  border-radius: 16px;
+  border: 2px solid #e5e7eb;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.client-logo-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(102, 126, 234, 0.15);
+  border-color: #667eea;
+  background: white;
+}
+
+.client-logo-circle {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 700;
+  font-size: 1.5rem;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.client-logo-item:hover .client-logo-circle {
+  transform: scale(1.1);
+}
+
+.client-logo-item span {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #4b5563;
+  transition: color 0.3s ease;
+}
+
+.client-logo-item:hover span {
+  color: #667eea;
 }
 
 /* Responsive */
