@@ -95,7 +95,7 @@ const LeadCaptureForm = () => {
     setSubmitStatus(null);
 
     try {
-      const response = await axios.post(getApiUrl('/api/leads'), formData);
+      const response = await axios.post(getApiUrl('/api/lead'), formData);
 
       if (response.data.success) {
         setSubmitStatus('success');

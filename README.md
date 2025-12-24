@@ -1,295 +1,461 @@
 # AI-Assisted Lead Capture & Automation System
 
-A complete, production-ready lead capture and automation system for service-based coaches. Features include a conversion-focused landing page, automated email notifications, AI chatbot, and admin dashboard.
+**Production-ready lead capture and automation system for service-based coaches.**
 
-## 🚀 Features
-
-- **Landing Page**: Clean, modern, conversion-focused design with headline, benefits, and CTA
-- **Lead Capture Form**: Validated form that captures Name, Email, Phone, and Service Interest
-- **Google Sheets Integration**: Automatically saves all leads to Google Sheets
-- **Automated Emails**: 
-  - Instant confirmation email to leads
-  - Notification email to business owner
-- **AI Chatbot**: Embedded chatbot that answers FAQs about services, pricing, and booking
-- **Admin Dashboard**: View all leads in a clean table format
-- **Deployment Ready**: Pre-configured for Railway, Render, Heroku, Vercel, and Netlify
-
-## 📁 Project Structure
-
-```
-lead-capture-automation/
-├── server/                 # Backend API
-│   ├── index.js           # Express server
-│   └── services/
-│       ├── googleSheets.js # Google Sheets integration
-│       ├── email.js        # Email automation
-│       └── chatbot.js      # AI chatbot logic
-├── client/                 # React frontend
-│   ├── src/
-│   │   ├── components/
-│   │   │   ├── LandingPage.js
-│   │   │   ├── LeadCaptureForm.js
-│   │   │   ├── Chatbot.js
-│   │   │   └── AdminDashboard.js
-│   │   └── App.js
-│   └── public/
-└── package.json
-```
-
-## 📦 Quick Start
-
-### Push to GitHub
-
-```bash
-# Use the setup script (recommended)
-# Windows: powershell scripts/setup-github.ps1
-# Mac/Linux: bash scripts/setup-github.sh
-
-# Or manually:
-git init
-git remote add origin https://github.com/YOUR_USERNAME/lead-capture-automation.git
-git add .
-git commit -m "Initial commit"
-git push -u origin main
-```
-
-See `GITHUB_SETUP.md` for detailed instructions.
-
-### Deploy
-
-1. **Backend**: Deploy to [Railway](https://railway.app) or [Render](https://render.com)
-2. **Frontend**: Deploy to [Vercel](https://vercel.com) or [Netlify](https://netlify.com)
-
-See `DEPLOY_QUICK.md` for 5-minute deployment guide.
+Built with Next.js, deployed on Vercel, with Google Sheets integration, email automation, and AI chatbot.
 
 ---
 
-## 🛠️ Local Setup Instructions
+## 🏗️ Architecture
 
-### Prerequisites
+- **Frontend**: Next.js (React) - Server-side rendered, optimized for Vercel
+- **Backend**: Next.js API Routes - Serverless functions on Vercel
+- **Database**: Google Sheets - Simple, reliable, no database setup needed
+- **Email**: Nodemailer with SMTP - Gmail, Outlook, or any SMTP provider
+- **AI Chatbot**: OpenAI API (optional) - Falls back to rule-based responses
+- **Deployment**: Vercel - Zero-config deployment
 
-- Node.js (v14 or higher)
-- npm or yarn
-- Google account (for Sheets integration)
-- Email account (for SMTP)
+---
+
+## 📋 System Flow
+
+### Lead Submission Flow
+
+1. **User submits form** → Frontend validates input
+2. **POST /api/lead** → Backend receives request
+3. **Rate limiting** → Prevents abuse (5 requests/minute)
+4. **Validation** → Server-side validation of all fields
+5. **Duplicate check** → Prevents same email within 5 minutes
+6. **Save to Google Sheets** → Stores lead data
+7. **Send confirmation email** → To lead (non-blocking)
+8. **Send notification email** → To business owner (non-blocking)
+9. **Return success** → User sees confirmation
+
+### Chatbot Flow
+
+1. **User sends message** → Frontend sends to `/api/chat`
+2. **Rate limiting** → 20 requests/minute
+3. **Input sanitization** → Clean and validate message
+4. **AI processing** → OpenAI API (if configured) or fallback
+5. **Return response** → User sees answer
+
+### Admin Dashboard Flow
+
+1. **Admin visits /admin** → Frontend loads
+2. **GET /api/leads** → Fetches all leads
+3. **Google Sheets query** → Retrieves data
+4. **Display leads** → Sorted by newest first
+
+---
+
+## 🚀 Quick Start
 
 ### 1. Install Dependencies
 
 ```bash
-# Install root dependencies
 npm install
-
-# Install client dependencies
-cd client
-npm install
-cd ..
 ```
 
-Or use the convenience script:
-```bash
-npm run install-all
-```
+### 2. Set Up Google Sheets
 
-### 2. Configure Google Sheets
+1. Create a Google Sheet
+2. Create Google Cloud Project
+3. Enable Google Sheets API
+4. Create Service Account
+5. Download JSON credentials
+6. Share sheet with service account email
+7. Copy Sheet ID from URL
 
-#### Step 1: Create Google Cloud Project
-1. Go to [Google Cloud Console](https://console.cloud.google.com/)
-2. Create a new project or select existing one
-3. Enable **Google Sheets API**
+### 3. Configure Environment Variables
 
-#### Step 2: Create Service Account
-1. Navigate to **IAM & Admin** > **Service Accounts**
-2. Click **Create Service Account**
-3. Give it a name (e.g., "lead-capture-service")
-4. Click **Create and Continue**
-5. Skip role assignment, click **Done**
-
-#### Step 3: Generate Key
-1. Click on the service account you just created
-2. Go to **Keys** tab
-3. Click **Add Key** > **Create new key**
-4. Choose **JSON** format
-5. Download the JSON file
-
-#### Step 4: Create Google Sheet
-1. Create a new Google Sheet
-2. Name it (e.g., "Lead Capture Data")
-3. Copy the Sheet ID from the URL:
-   ```
-   https://docs.google.com/spreadsheets/d/SHEET_ID_HERE/edit
-   ```
-4. Share the sheet with the service account email (found in the JSON file)
-   - Click **Share** button
-   - Add the service account email (ends with @...iam.gserviceaccount.com)
-   - Give it **Editor** access
-
-#### Step 5: Add to Environment Variables
-Open the downloaded JSON file and copy its contents.
-
-### 3. Configure Email (SMTP)
-
-#### For Gmail:
-1. Enable 2-Factor Authentication on your Google account
-2. Go to [App Passwords](https://myaccount.google.com/apppasswords)
-3. Generate an app password for "Mail"
-4. Use this password (not your regular Gmail password)
-
-#### For Other Providers:
-Check your email provider's SMTP settings:
-- **Outlook**: smtp-mail.outlook.com, port 587
-- **SendGrid**: smtp.sendgrid.net, port 587
-- **Mailgun**: smtp.mailgun.org, port 587
-
-### 4. Environment Variables
-
-Create a `.env` file in the root directory:
+Create `.env.local` file:
 
 ```env
-# Server Configuration
-PORT=5000
-NODE_ENV=development
-
-# Google Sheets Integration
-GOOGLE_SHEETS_CREDENTIALS={"type":"service_account","project_id":"...","private_key_id":"...","private_key":"...","client_email":"...","client_id":"...","auth_uri":"...","token_uri":"...","auth_provider_x509_cert_url":"...","client_x509_cert_url":"..."}
-GOOGLE_SHEET_ID=your_google_sheet_id_here
-
-# Email Configuration (SMTP)
-SMTP_HOST=smtp.gmail.com
-SMTP_PORT=587
-SMTP_SECURE=false
+GOOGLE_SHEETS_CREDENTIALS={"type":"service_account",...}
+GOOGLE_SHEET_ID=your_sheet_id
 SMTP_USER=your_email@gmail.com
-SMTP_PASSWORD=your_app_password_here
-EMAIL_FROM_NAME=Your Coaching Business
+SMTP_PASSWORD=your_app_password
 OWNER_EMAIL=your_email@gmail.com
+OPENAI_API_KEY=sk-... (optional)
 ```
 
-**Important**: 
-- Paste the entire JSON credentials as a single line in `GOOGLE_SHEETS_CREDENTIALS`
-- Replace `your_google_sheet_id_here` with your actual Sheet ID
-- Use Gmail App Password (not regular password) for `SMTP_PASSWORD`
-
-### 5. Run the Application
+### 4. Run Locally
 
 ```bash
-# Development mode (runs both server and client)
 npm run dev
-
-# Or run separately:
-npm run server    # Backend on http://localhost:5000
-npm run client    # Frontend on http://localhost:3000
 ```
 
-## 📍 Access Points
+Visit: http://localhost:3000
 
-- **Landing Page**: http://localhost:3000
-- **Admin Dashboard**: http://localhost:3000/admin
-- **API Health Check**: http://localhost:5000/api/health
+### 5. Deploy to Vercel
 
-## 🔧 Alternative: Using Zapier/Make.com
+```bash
+# Install Vercel CLI
+npm i -g vercel
 
-Instead of direct Google Sheets/Email integration, you can use automation platforms:
+# Deploy
+vercel
 
-### Zapier Setup:
-1. Create a Zap with Webhook trigger
-2. Add your webhook URL to `.env`:
-   ```env
-   ZAPIER_WEBHOOK_URL=https://hooks.zapier.com/hooks/catch/...
-   ```
-3. Modify `server/index.js` to send data to Zapier webhook
-4. Configure Zapier to:
-   - Save to Google Sheets
-   - Send confirmation email
-   - Send notification to owner
-
-### Make.com Setup:
-Similar to Zapier, use webhooks to trigger Make.com scenarios.
-
-## 🤖 Chatbot Customization
-
-The chatbot uses prompt-based logic. To customize:
-
-1. Edit `server/services/chatbot.js`
-2. Update `faqDatabase` with your services, pricing, etc.
-3. Modify `keywordMap` to add more keyword triggers
-
-### Upgrade to OpenAI (Optional):
-
-1. Get API key from [OpenAI](https://platform.openai.com/)
-2. Add to `.env`:
-   ```env
-   OPENAI_API_KEY=sk-...
-   ```
-3. Install OpenAI package:
-   ```bash
-   npm install openai
-   ```
-4. Uncomment and use the OpenAI function in `chatbot.js`
-
-## 🚢 Deployment
-
-### Deploy Backend (Heroku/Railway/Render):
-
-1. Set environment variables in your hosting platform
-2. Update CORS settings if needed
-3. Deploy:
-   ```bash
-   git push heroku main
-   ```
-
-### Deploy Frontend (Vercel/Netlify):
-
-1. Build the React app:
-   ```bash
-   cd client
-   npm run build
-   ```
-2. Deploy the `build` folder
-3. Update API URLs in frontend code to point to your backend
-
-### Environment Variables for Production:
-
-Make sure to set all environment variables in your hosting platform's dashboard.
-
-## 📝 Customization
-
-### Update Services List:
-Edit `client/src/components/LeadCaptureForm.js` - modify the `services` array.
-
-### Update Benefits:
-Edit `client/src/components/LandingPage.js` - modify the benefits section.
-
-### Update Email Templates:
-Edit `server/services/email.js` - modify the `emailTemplates` object.
-
-### Update Chatbot Responses:
-Edit `server/services/chatbot.js` - modify the `faqDatabase` object.
-
-## 🐛 Troubleshooting
-
-### Google Sheets Not Working:
-- Verify service account email has access to the sheet
-- Check that `GOOGLE_SHEETS_CREDENTIALS` is valid JSON (single line)
-- Ensure Google Sheets API is enabled
-
-### Emails Not Sending:
-- For Gmail: Use App Password, not regular password
-- Check SMTP settings match your provider
-- Verify firewall isn't blocking port 587
-
-### Chatbot Not Responding:
-- Check browser console for errors
-- Verify backend is running on port 5000
-- Check API endpoint: `/api/chatbot`
-
-## 📄 License
-
-MIT License - Feel free to use for your business!
-
-## 🤝 Support
-
-For issues or questions, check the code comments - everything is well-documented!
+# Add environment variables in Vercel dashboard
+```
 
 ---
 
-**Built with ❤️ for service-based coaches**
+## 📁 Project Structure
 
+```
+├── pages/
+│   ├── api/
+│   │   ├── lead.js          # Lead submission endpoint
+│   │   ├── chat.js          # Chatbot endpoint
+│   │   ├── leads.js         # Admin dashboard endpoint
+│   │   └── health.js        # Health check
+│   ├── index.js             # Home page
+│   ├── admin.js             # Admin dashboard
+│   └── _app.js              # App wrapper
+├── components/              # React components
+│   ├── LandingPage.js
+│   ├── LeadCaptureForm.js
+│   ├── Chatbot.js
+│   ├── AdminDashboard.js
+│   └── ...
+├── lib/                     # Backend utilities
+│   ├── validation.js        # Input validation
+│   ├── logger.js            # Logging utility
+│   ├── rateLimiter.js       # Rate limiting
+│   ├── googleSheets.js      # Google Sheets integration
+│   ├── email.js             # Email automation
+│   └── chatbot.js           # AI chatbot logic
+├── styles/                  # CSS files
+└── public/                  # Static assets
+```
+
+---
+
+## 🔧 API Endpoints
+
+### POST /api/lead
+
+Submit a new lead.
+
+**Request:**
+```json
+{
+  "name": "John Doe",
+  "email": "john@example.com",
+  "phone": "+1 555-1234",
+  "service": "Business Coaching"
+}
+```
+
+**Response:**
+```json
+{
+  "success": true,
+  "message": "Thank you! We've received your information...",
+  "lead": {
+    "name": "John Doe",
+    "email": "john@example.com",
+    "service": "Business Coaching"
+  }
+}
+```
+
+**Error Response:**
+```json
+{
+  "success": false,
+  "error": "Validation failed",
+  "errors": {
+    "email": "Invalid email format"
+  }
+}
+```
+
+### POST /api/chat
+
+Chatbot query.
+
+**Request:**
+```json
+{
+  "message": "What services do you offer?"
+}
+```
+
+**Response:**
+```json
+{
+  "success": true,
+  "response": {
+    "message": "We offer lead capture, email automation..."
+  }
+}
+```
+
+### GET /api/leads
+
+Fetch all leads (admin).
+
+**Response:**
+```json
+{
+  "success": true,
+  "leads": [
+    {
+      "id": 1,
+      "name": "John Doe",
+      "email": "john@example.com",
+      "phone": "+1 555-1234",
+      "service": "Business Coaching",
+      "date": "2024-01-15T10:30:00Z",
+      "timestamp": "1705315800000"
+    }
+  ],
+  "count": 1
+}
+```
+
+### GET /api/health
+
+Health check endpoint.
+
+---
+
+## 🛡️ Security & Reliability
+
+### Implemented Features
+
+- ✅ **Input Validation** - Server-side validation of all inputs
+- ✅ **Rate Limiting** - Prevents abuse (5 req/min for leads, 20 req/min for chat)
+- ✅ **Duplicate Prevention** - Prevents same email within 5 minutes
+- ✅ **Error Handling** - Graceful error handling, no crashes
+- ✅ **Logging** - Comprehensive logging for debugging
+- ✅ **Email Deduplication** - Prevents sending same email twice
+- ✅ **Input Sanitization** - XSS prevention
+- ✅ **Environment Variables** - No secrets in code
+
+### Production Considerations
+
+- **Authentication**: Add authentication to `/api/leads` in production
+- **Rate Limiting**: Consider Redis for distributed rate limiting
+- **Monitoring**: Set up error tracking (Sentry, etc.)
+- **Backup**: Regular backups of Google Sheets
+- **SSL**: Vercel provides SSL automatically
+
+---
+
+## 🧪 Testing
+
+### Manual Test Checklist
+
+#### Lead Submission
+- [ ] Submit valid lead → Should succeed
+- [ ] Submit with invalid email → Should show error
+- [ ] Submit duplicate email within 5 min → Should show duplicate error
+- [ ] Submit 6 times quickly → Should hit rate limit
+- [ ] Check Google Sheets → Lead should appear
+- [ ] Check email inbox → Confirmation email received
+- [ ] Check owner email → Notification email received
+
+#### Chatbot
+- [ ] Ask "What services do you offer?" → Should get response
+- [ ] Ask "What is your pricing?" → Should get response
+- [ ] Send empty message → Should show error
+- [ ] Send 21 messages quickly → Should hit rate limit
+- [ ] Ask irrelevant question → Should redirect to consultation
+
+#### Admin Dashboard
+- [ ] Visit /admin → Should load leads
+- [ ] Check lead count → Should match Google Sheets
+- [ ] Verify sorting → Newest first
+
+### Edge Cases Tested
+
+- Invalid email formats
+- Missing required fields
+- Double-click submit (duplicate prevention)
+- Network failures (graceful error handling)
+- Google Sheets API failure (emails still sent)
+- Email service failure (lead still saved)
+- OpenAI API failure (fallback responses)
+- Rate limit exceeded
+- Empty inputs
+- Very long inputs
+- Special characters in inputs
+
+---
+
+## 🔄 Customization
+
+### Update Services List
+
+Edit `components/LeadCaptureForm.js`:
+
+```javascript
+const services = [
+  'Business Coaching',
+  'Life Coaching',
+  // Add your services here
+];
+```
+
+### Update Email Templates
+
+Edit `lib/email.js` - `templates` object.
+
+### Update Chatbot Responses
+
+Edit `lib/chatbot.js` - `fallbackResponses` object or `SYSTEM_PROMPT`.
+
+### Update Company Information
+
+Edit:
+- `components/ContactSection.js` - Contact details
+- `components/Footer.js` - Company info
+- `lib/email.js` - Email signatures
+
+---
+
+## 🐛 Troubleshooting
+
+### Leads Not Saving
+
+1. Check Google Sheets credentials in `.env.local`
+2. Verify service account has access to sheet
+3. Check sheet name is "Leads"
+4. Check Vercel logs for errors
+
+### Emails Not Sending
+
+1. Verify SMTP credentials
+2. For Gmail: Use App Password (not regular password)
+3. Check spam folder
+4. Verify `OWNER_EMAIL` is set
+5. Check Vercel logs
+
+### Chatbot Not Responding
+
+1. Check OpenAI API key (if using AI)
+2. Verify rate limit not exceeded
+3. Check Vercel logs
+4. Fallback responses should work without OpenAI
+
+### Build Errors
+
+1. Run `npm install` again
+2. Clear `.next` folder: `rm -rf .next`
+3. Check Node.js version (14+)
+4. Check environment variables
+
+---
+
+## 📊 Monitoring
+
+### Health Check
+
+Visit `/api/health` to check:
+- Service status
+- Configuration status
+- Uptime
+
+### Logs
+
+View logs in:
+- **Local**: Terminal output
+- **Vercel**: Dashboard → Functions → Logs
+
+### Metrics to Monitor
+
+- Lead submission rate
+- Email delivery rate
+- API error rate
+- Response times
+- Rate limit hits
+
+---
+
+## 🚢 Deployment
+
+### Vercel Deployment
+
+1. Push to GitHub
+2. Import project in Vercel
+3. Add environment variables
+4. Deploy
+
+### Environment Variables in Vercel
+
+Add all variables from `.env.example` in Vercel dashboard:
+- Settings → Environment Variables
+
+### Post-Deployment Checklist
+
+- [ ] Test lead submission
+- [ ] Test chatbot
+- [ ] Test admin dashboard
+- [ ] Verify emails sending
+- [ ] Check Google Sheets updating
+- [ ] Test on mobile
+- [ ] Check SSL certificate
+- [ ] Monitor error logs
+
+---
+
+## 📝 Common Failure Points & Fixes
+
+### 1. Google Sheets Permission Denied
+
+**Problem**: Service account doesn't have access
+
+**Fix**: Share Google Sheet with service account email (from credentials JSON)
+
+### 2. Email Authentication Failed
+
+**Problem**: Wrong SMTP credentials
+
+**Fix**: 
+- For Gmail: Generate App Password
+- Check SMTP_HOST and SMTP_PORT
+- Verify SMTP_SECURE setting
+
+### 3. Rate Limit Errors
+
+**Problem**: Too many requests
+
+**Fix**: Wait for rate limit window to reset (1 minute)
+
+### 4. Duplicate Lead Error
+
+**Problem**: Same email submitted within 5 minutes
+
+**Fix**: Wait 5 minutes or use different email
+
+### 5. OpenAI API Errors
+
+**Problem**: Invalid API key or quota exceeded
+
+**Fix**: 
+- Check API key in environment variables
+- Verify OpenAI account has credits
+- System will fall back to rule-based responses
+
+---
+
+## 📄 License
+
+MIT License
+
+---
+
+## 🤝 Support
+
+For issues:
+1. Check logs in Vercel dashboard
+2. Review this README
+3. Check environment variables
+4. Test health endpoint: `/api/health`
+
+---
+
+**Built with ❤️ by Pramana15 | Jagatpura, Jaipur, Rajasthan, India**

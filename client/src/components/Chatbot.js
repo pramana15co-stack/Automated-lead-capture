@@ -41,7 +41,7 @@ const Chatbot = () => {
 
     try {
       // Call chatbot API
-      const response = await axios.post(getApiUrl('/api/chatbot'), {
+      const response = await axios.post(getApiUrl('/api/chat'), {
         message: userMessage
       });
 
@@ -79,7 +79,7 @@ const Chatbot = () => {
 
     try {
       // Call chatbot API
-      const response = await axios.post(getApiUrl('/api/chatbot'), {
+      const response = await axios.post(getApiUrl('/api/chat'), {
         message: query
       });
 
