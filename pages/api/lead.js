@@ -79,15 +79,27 @@ export default async function handler(req, res) {
     } catch (sheetsError) {
       logError('Google Sheets save error', sheetsError);
       
-      // Provide more helpful error messages
-      let errorMessage = 'Failed to save lead to Google Sheets. Please try again or contact support.';
+      // Provide more helpful error messages with specific guidance
+      let errorMessage = 'Failed to save lead to Google Sheets. Please try again.';
+      let helpText = '';
       
-      if (sheetsError.message?.includes('credentials')) {
-        errorMessage = 'Google Sheets is not properly configured. Please contact support.';
-      } else if (sheetsError.message?.includes('permission') || sheetsError.message?.includes('access')) {
-        errorMessage = 'Google Sheets access denied. Please ensure the service account has proper permissions.';
-      } else if (sheetsError.message?.includes('not found') || sheetsError.message?.includes('404')) {
-        errorMessage = 'Google Sheet not found. Please check the sheet ID configuration.';
+      const errorMsg = sheetsError.message?.toLowerCase() || '';
+      
+      if (errorMsg.includes('credentials not configured') || errorMsg.includes('credentials')) {
+        errorMessage = 'Google Sheets is not properly configured.';
+        helpText = 'Please check that GOOGLE_SHEET_ID and GOOGLE_SHEETS_CREDENTIALS are set in Vercel environment variables.';
+      } else if (errorMsg.includes('invalid') && errorMsg.includes('json')) {
+        errorMessage = 'Google Sheets credentials format is invalid.';
+        helpText = 'Please verify GOOGLE_SHEETS_CREDENTIALS is valid JSON (all on one line).';
+      } else if (errorMsg.includes('permission') || errorMsg.includes('access') || errorMsg.includes('403')) {
+        errorMessage = 'Google Sheets access denied.';
+        helpText = 'Please share your Google Sheet with the service account email (from GOOGLE_SHEETS_CREDENTIALS) and give it Editor permission.';
+      } else if (errorMsg.includes('not found') || errorMsg.includes('404')) {
+        errorMessage = 'Google Sheet not found.';
+        helpText = 'Please verify GOOGLE_SHEET_ID is correct and the sheet exists.';
+      } else if (errorMsg.includes('unauthorized') || errorMsg.includes('401')) {
+        errorMessage = 'Google Sheets authentication failed.';
+        helpText = 'Please verify GOOGLE_SHEETS_CREDENTIALS is correct and the service account key is valid.';
       }
       
       // Return error so user knows it failed
@@ -95,6 +107,7 @@ export default async function handler(req, res) {
       return res.status(500).json({
         success: false,
         error: errorMessage,
+        help: helpText || undefined,
         details: process.env.NODE_ENV === 'development' ? sheetsError.message : undefined
       });
     }
