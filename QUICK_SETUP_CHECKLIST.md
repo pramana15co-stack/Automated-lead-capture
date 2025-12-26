@@ -91,6 +91,8 @@ SMTP_PASS=your-16-char-app-password
 OWNER_EMAIL=pramana15.co@gmail.com
 ```
 
+⚠️ **IMPORTANT:** Never paste real credentials in this file! I'll guide you to add them securely to Vercel.
+
 **Option 2: I'll Guide You to Add Directly to Vercel**
 Tell me when you're ready, and I'll give you exact step-by-step instructions.
 
@@ -115,4 +117,5 @@ If you get stuck at any step:
 ---
 
 **Ready to start? Begin with Part 1!** 🚀
+
 

@@ -87,3 +87,4 @@ if ($addFiles -eq "y" -or $addFiles -eq "Y") {
 Write-Host ""
 Write-Host "✅ Setup complete!" -ForegroundColor Green
 
+

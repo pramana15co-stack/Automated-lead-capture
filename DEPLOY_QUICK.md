@@ -96,3 +96,4 @@ REACT_APP_API_URL=https://your-backend-url.com
 
 **Full guides**: See `GITHUB_SETUP.md` and `DEPLOYMENT.md`
 
+

@@ -21,3 +21,4 @@ fi
 echo ""
 echo "Cache cleared! Now run: npm run build"
 
+

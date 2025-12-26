@@ -12,7 +12,11 @@ const LeadCaptureForm = () => {
     name: '',
     email: '',
     phone: '',
-    service: ''
+    company: '',
+    service: '',
+    budget: '',
+    preferredTime: '',
+    message: ''
   });
 
   const [errors, setErrors] = useState({});
@@ -26,7 +30,30 @@ const LeadCaptureForm = () => {
     'Career Development',
     'Leadership Training',
     'Performance Optimization',
+    'Lead Capture System',
+    'Email Automation',
+    'AI Chatbot Integration',
     'Other'
+  ];
+
+  // Budget options
+  const budgetOptions = [
+    'Under $500',
+    '$500 - $1,000',
+    '$1,000 - $2,500',
+    '$2,500 - $5,000',
+    '$5,000 - $10,000',
+    'Over $10,000',
+    'Not sure yet'
+  ];
+
+  // Preferred contact time options
+  const timeOptions = [
+    'Morning (9 AM - 12 PM)',
+    'Afternoon (12 PM - 5 PM)',
+    'Evening (5 PM - 8 PM)',
+    'Anytime',
+    'Weekends only'
   ];
 
   /**
@@ -77,6 +104,16 @@ const LeadCaptureForm = () => {
       newErrors.service = 'Please select a service';
     }
 
+    // Company is optional but validate if provided
+    if (formData.company && formData.company.trim().length > 100) {
+      newErrors.company = 'Company name is too long';
+    }
+
+    // Message is optional but validate if provided
+    if (formData.message && formData.message.trim().length > 500) {
+      newErrors.message = 'Message is too long (max 500 characters)';
+    }
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -113,7 +150,11 @@ const LeadCaptureForm = () => {
           name: '',
           email: '',
           phone: '',
-          service: ''
+          company: '',
+          service: '',
+          budget: '',
+          preferredTime: '',
+          message: ''
         });
         // Clear success message after 5 seconds
         setTimeout(() => setSubmitStatus(null), 5000);
@@ -196,6 +237,21 @@ const LeadCaptureForm = () => {
         {errors.phone && <span className="error-message">{errors.phone}</span>}
       </div>
 
+      {/* Company Field */}
+      <div className="form-group">
+        <label htmlFor="company">Company Name</label>
+        <input
+          type="text"
+          id="company"
+          name="company"
+          value={formData.company}
+          onChange={handleChange}
+          placeholder="Your company (optional)"
+          className={errors.company ? 'error' : ''}
+        />
+        {errors.company && <span className="error-message">{errors.company}</span>}
+      </div>
+
       {/* Service Selection */}
       <div className="form-group">
         <label htmlFor="service">Service Interested In *</label>
@@ -214,6 +270,61 @@ const LeadCaptureForm = () => {
           ))}
         </select>
         {errors.service && <span className="error-message">{errors.service}</span>}
+      </div>
+
+      {/* Budget Selection */}
+      <div className="form-group">
+        <label htmlFor="budget">Budget Range</label>
+        <select
+          id="budget"
+          name="budget"
+          value={formData.budget}
+          onChange={handleChange}
+        >
+          <option value="">Select budget range (optional)</option>
+          {budgetOptions.map(budget => (
+            <option key={budget} value={budget}>
+              {budget}
+            </option>
+          ))}
+        </select>
+      </div>
+
+      {/* Preferred Contact Time */}
+      <div className="form-group">
+        <label htmlFor="preferredTime">Preferred Contact Time</label>
+        <select
+          id="preferredTime"
+          name="preferredTime"
+          value={formData.preferredTime}
+          onChange={handleChange}
+        >
+          <option value="">Select preferred time (optional)</option>
+          {timeOptions.map(time => (
+            <option key={time} value={time}>
+              {time}
+            </option>
+          ))}
+        </select>
+      </div>
+
+      {/* Message Field */}
+      <div className="form-group">
+        <label htmlFor="message">Additional Message</label>
+        <textarea
+          id="message"
+          name="message"
+          value={formData.message}
+          onChange={handleChange}
+          placeholder="Tell us about your project or any specific requirements (optional)"
+          rows="4"
+          className={errors.message ? 'error' : ''}
+          maxLength={500}
+        />
+        {errors.message && <span className="error-message">{errors.message}</span>}
+        {formData.message && (
+          <span className="char-count">{formData.message.length}/500 characters</span>
+        )}
       </div>
 
       {/* Submit Button */}

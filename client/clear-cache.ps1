@@ -18,3 +18,4 @@ if (Test-Path "node_modules/.cache") {
 
 Write-Host "`nCache cleared! Now run: npm run build" -ForegroundColor Cyan
 
+
