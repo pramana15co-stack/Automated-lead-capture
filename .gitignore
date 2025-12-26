@@ -35,7 +35,13 @@ credentials.json
 service-account-key.json
 YOUR_CREDENTIALS.md
 YOUR_CONFIG.md
+*CREDENTIALS*.md
+*CONFIG*.md
+*_CREDENTIALS*.md
+*_CONFIG*.md
 
 # Vercel
 .vercel
 vercel-env.txt
+*env*.txt
+*ENV*.txt
