@@ -12,7 +12,7 @@ const Chatbot = () => {
   const [messages, setMessages] = useState([
     {
       type: 'bot',
-      text: "Hi! I'm here to help you learn more about our coaching services. What would you like to know?"
+      text: "Hello! I'm here to help you learn about Pramana15's automation solutions.\n\nWe help service businesses stop missing enquiries with:\n• Instant lead capture & notifications\n• AI voice call automation\n• Smart booking & follow-ups\n• Complete lead tracking\n\nWhat's your biggest challenge with managing leads right now?"
     }
   ]);
   const [inputValue, setInputValue] = useState('');
@@ -68,8 +68,9 @@ const Chatbot = () => {
    */
   const quickActions = [
     { label: 'What services do you offer?', query: 'What services do you offer?' },
+    { label: 'How does it work?', query: 'How does your automation system work?' },
     { label: 'What is your pricing?', query: 'What is your pricing?' },
-    { label: 'How do I book a call?', query: 'How do I book a consultation?' }
+    { label: 'Book a demo', query: 'I would like to book a demo' }
   ];
 
   const handleQuickAction = async (query) => {
