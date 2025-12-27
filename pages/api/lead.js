@@ -87,7 +87,7 @@ export default async function handler(req, res) {
       
       if (errorMsg.includes('credentials not configured') || errorMsg.includes('credentials')) {
         errorMessage = 'Google Sheets is not properly configured.';
-        helpText = 'Please check that GOOGLE_SHEET_ID and GOOGLE_SHEETS_CREDENTIALS are set in Vercel environment variables.';
+        helpText = 'Please check: 1) GOOGLE_SHEET_ID and GOOGLE_SHEETS_CREDENTIALS are set in Vercel, 2) Sheet is shared with service account email (from JSON), 3) Service account has Editor permission. Visit /api/test-services for detailed diagnostics.';
       } else if (errorMsg.includes('invalid') && errorMsg.includes('json')) {
         errorMessage = 'Google Sheets credentials format is invalid.';
         helpText = 'Please verify GOOGLE_SHEETS_CREDENTIALS is valid JSON (all on one line).';
