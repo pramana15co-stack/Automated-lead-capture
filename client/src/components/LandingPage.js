@@ -41,7 +41,7 @@ const LandingPage = () => {
               <a href="#portfolio" className="nav-link">Portfolio</a>
               <a href="#contact" className="nav-link">Contact</a>
               <button className="btn btn-nav" onClick={handleCTAClick}>
-                Get Started
+                Stop Missing Enquiries
               </button>
             </div>
           </div>
@@ -54,27 +54,26 @@ const LandingPage = () => {
         <div className="container">
           <div className="hero-content">
             <div className="hero-badge">
-              <span>🏆 Award-Winning Solution | Trusted by 500+ Coaches Worldwide</span>
+              <span>🏆 Trusted by Service Businesses | Fast Setup in 3-5 Days</span>
             </div>
             <h1 className="hero-headline">
-              Premium Lead Capture System
-              <span className="gradient-text"> Built for Success</span>
+              Stop Missing Enquiries
+              <span className="gradient-text"> with Smart Automation</span>
             </h1>
             <p className="hero-subheadline">
-              A complete, production-ready automation system that captures leads, sends automated emails, 
-              and integrates with AI chatbots. Built by experienced developers, 
-              serving clients across the US, UK, Australia, and globally.
+              Capture every lead instantly. Get WhatsApp alerts, AI voice confirmations, and automated follow-ups. 
+              Never lose a hot lead again, even after business hours.
             </p>
             <div className="hero-cta-group">
               <button 
                 className="btn btn-primary btn-large btn-pulse"
                 onClick={handleCTAClick}
               >
-                Book Your Free Consultation
+                Book a 10-Min Demo
                 <span className="btn-arrow">→</span>
               </button>
-              <a href="#features" className="btn btn-secondary btn-large">
-                View Features
+              <a href="#how-it-works" className="btn btn-secondary btn-large">
+                See How Automation Works
               </a>
             </div>
           </div>
@@ -114,6 +113,223 @@ const LandingPage = () => {
         </div>
       </section>
 
+      {/* How We Stop You Missing Enquiries */}
+      <section id="how-it-works" className="enquiry-flow-section">
+        <div className="container">
+          <div className="section-header">
+            <span className="section-label">How It Works</span>
+            <h2 className="section-title">How We Stop You Missing Enquiries</h2>
+            <p className="section-subtitle">
+              A simple flow that ensures every enquiry gets attention, instantly
+            </p>
+          </div>
+          <div className="flow-container">
+            <div className="flow-step">
+              <div className="flow-icon">🌐</div>
+              <h3>Website Enquiry</h3>
+              <p>Lead submits form on your website</p>
+            </div>
+            <div className="flow-arrow">→</div>
+            <div className="flow-step">
+              <div className="flow-icon">💬</div>
+              <h3>Instant WhatsApp Alert</h3>
+              <p>You get notified immediately on WhatsApp</p>
+            </div>
+            <div className="flow-arrow">→</div>
+            <div className="flow-step flow-step-optional">
+              <div className="flow-icon">📞</div>
+              <h3>AI Voice Confirmation</h3>
+              <p>Optional: AI calls to confirm serious enquiries</p>
+            </div>
+            <div className="flow-arrow">→</div>
+            <div className="flow-step">
+              <div className="flow-icon">👤</div>
+              <h3>Human Callback</h3>
+              <p>You or your team takes over for personal touch</p>
+            </div>
+            <div className="flow-arrow">→</div>
+            <div className="flow-step">
+              <div className="flow-icon">🔄</div>
+              <h3>Automated Follow-ups</h3>
+              <p>Smart reminders keep leads engaged</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Automation Channels Section */}
+      <section className="automation-channels-section">
+        <div className="container">
+          <div className="section-header">
+            <span className="section-label">Our Capabilities</span>
+            <h2 className="section-title">Automation Channels We Use</h2>
+            <p className="section-subtitle">
+              Multiple touchpoints to ensure no enquiry goes unnoticed
+            </p>
+          </div>
+          <div className="channels-grid">
+            <div className="channel-card">
+              <div className="channel-icon">📧</div>
+              <h3>Email Automation</h3>
+              <p>Instant confirmations and scheduled follow-ups keep leads engaged</p>
+            </div>
+            <div className="channel-card">
+              <div className="channel-icon">💬</div>
+              <h3>WhatsApp Notifications & Follow-ups</h3>
+              <p>Real-time alerts and automated messages for instant engagement</p>
+            </div>
+            <div className="channel-card">
+              <div className="channel-icon">📞</div>
+              <h3>AI Voice Call Automation</h3>
+              <p>Instantly confirms serious enquiries so you never lose hot leads</p>
+            </div>
+            <div className="channel-card">
+              <div className="channel-icon">📅</div>
+              <h3>Smart Booking & Scheduling</h3>
+              <p>Automated appointment booking that works 24/7</p>
+            </div>
+            <div className="channel-card">
+              <div className="channel-icon">📊</div>
+              <h3>Lead Tracking Dashboard</h3>
+              <p>Complete visibility into every enquiry and follow-up status</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Service Packages Section */}
+      <section id="packages" className="packages-section">
+        <div className="container">
+          <div className="section-header">
+            <span className="section-label">Choose Your Plan</span>
+            <h2 className="section-title">Service Packages</h2>
+            <p className="section-subtitle">
+              Select the automation level that fits your business needs
+            </p>
+          </div>
+          <div className="packages-grid">
+            <div className="package-card">
+              <div className="package-header">
+                <h3 className="package-name">CORE</h3>
+              </div>
+              <div className="package-features">
+                <div className="package-feature">
+                  <span className="feature-check">✓</span>
+                  <span>Instant lead capture</span>
+                </div>
+                <div className="package-feature">
+                  <span className="feature-check">✓</span>
+                  <span>Email notifications</span>
+                </div>
+                <div className="package-feature">
+                  <span className="feature-check">✓</span>
+                  <span>AI chat assistant</span>
+                </div>
+                <div className="package-feature">
+                  <span className="feature-check">✓</span>
+                  <span>Lead dashboard</span>
+                </div>
+              </div>
+              <button className="btn btn-package" onClick={handleCTAClick}>
+                Get Started
+              </button>
+            </div>
+            <div className="package-card package-card-popular">
+              <div className="popular-badge">Most Popular</div>
+              <div className="package-header">
+                <h3 className="package-name">PRO</h3>
+              </div>
+              <div className="package-features">
+                <div className="package-feature">
+                  <span className="feature-check">✓</span>
+                  <span>Everything in CORE</span>
+                </div>
+                <div className="package-feature">
+                  <span className="feature-check">✓</span>
+                  <span>WhatsApp alerts</span>
+                </div>
+                <div className="package-feature">
+                  <span className="feature-check">✓</span>
+                  <span>Booking integration</span>
+                </div>
+                <div className="package-feature">
+                  <span className="feature-check">✓</span>
+                  <span>After-hours auto responses</span>
+                </div>
+              </div>
+              <button className="btn btn-package btn-package-primary" onClick={handleCTAClick}>
+                Get Started
+              </button>
+            </div>
+            <div className="package-card">
+              <div className="package-header">
+                <h3 className="package-name">PREMIUM</h3>
+              </div>
+              <div className="package-features">
+                <div className="package-feature">
+                  <span className="feature-check">✓</span>
+                  <span>Everything in PRO</span>
+                </div>
+                <div className="package-feature">
+                  <span className="feature-check">✓</span>
+                  <span>AI voice call automation</span>
+                </div>
+                <div className="package-feature">
+                  <span className="feature-check">✓</span>
+                  <span>Smart lead routing</span>
+                </div>
+                <div className="package-feature">
+                  <span className="feature-check">✓</span>
+                  <span>Priority automation setup</span>
+                </div>
+              </div>
+              <button className="btn btn-package" onClick={handleCTAClick}>
+                Get Started
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Why Businesses Choose Pramana15 */}
+      <section className="why-choose-section">
+        <div className="container">
+          <div className="section-header">
+            <span className="section-label">Why Choose Us</span>
+            <h2 className="section-title">Why Businesses Choose Pramana15</h2>
+            <p className="section-subtitle">
+              Built specifically for service businesses that can't afford to miss enquiries
+            </p>
+          </div>
+          <div className="why-choose-grid">
+            <div className="why-choose-item">
+              <div className="why-choose-icon">🎯</div>
+              <h3>Designed for Service Businesses</h3>
+              <p>Every feature is built with service providers in mind</p>
+            </div>
+            <div className="why-choose-item">
+              <div className="why-choose-icon">⚡</div>
+              <h3>Fast Setup (3–5 Days)</h3>
+              <p>Get up and running quickly without long delays</p>
+            </div>
+            <div className="why-choose-item">
+              <div className="why-choose-icon">🚫</div>
+              <h3>No Missed Enquiries</h3>
+              <p>Multiple channels ensure every lead gets attention</p>
+            </div>
+            <div className="why-choose-item">
+              <div className="why-choose-icon">🌙</div>
+              <h3>Works After Business Hours</h3>
+              <p>Automation handles enquiries even when you're offline</p>
+            </div>
+            <div className="why-choose-item">
+              <div className="why-choose-icon">👥</div>
+              <h3>Human Takeover Anytime</h3>
+              <p>You stay in control and can step in whenever needed</p>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Features Section */}
       <section id="features" className="features">
@@ -343,10 +559,10 @@ const LandingPage = () => {
           <div className="form-container">
             <div className="form-header">
               <span className="section-label">Get Started</span>
-              <h2 className="form-title">Ready to Transform Your Business?</h2>
+              <h2 className="form-title">Stop Missing Enquiries</h2>
               <p className="form-subtitle">
-                Join successful coaches and businesses worldwide. Book your free consultation and discover 
-                how our production-ready system can help you capture more leads and grow your business.
+                Book a 10-minute demo and see how automation can transform your lead handling. 
+                Fast setup, no missed opportunities, works 24/7.
               </p>
             </div>
             <LeadCaptureForm />
