@@ -144,8 +144,17 @@ const LeadCaptureForm = () => {
       });
 
       if (response.data && response.data.success) {
-        setSubmitStatus('success');
-        // Reset form
+        // Check if booking link is provided
+        if (response.data.booking && response.data.booking.link) {
+          setSubmitStatus('success-with-booking');
+          // Store booking link temporarily
+          setFormData(prev => ({ ...prev, bookingLink: response.data.booking.link }));
+        } else {
+          setSubmitStatus('success');
+        }
+        
+        // Reset form (preserve booking link if exists)
+        const bookingLink = response.data.booking?.link || '';
         setFormData({
           name: '',
           email: '',
@@ -154,10 +163,15 @@ const LeadCaptureForm = () => {
           service: '',
           budget: '',
           preferredTime: '',
-          message: ''
+          message: '',
+          bookingLink: bookingLink
         });
-        // Clear success message after 5 seconds
-        setTimeout(() => setSubmitStatus(null), 5000);
+        
+        // Clear success message after longer time if booking link shown
+        setTimeout(() => {
+          setSubmitStatus(null);
+          setFormData(prev => ({ ...prev, bookingLink: '' }));
+        }, bookingLink ? 10000 : 5000);
       } else {
         // Handle unexpected response format
         setSubmitStatus('error');
@@ -343,6 +357,37 @@ const LeadCaptureForm = () => {
           <div className="alert-content">
             <strong>Success!</strong>
             <p>Thank you! We've received your information and will contact you within 24 hours.</p>
+          </div>
+        </div>
+      )}
+
+      {/* Success Message with Booking Link */}
+      {submitStatus === 'success-with-booking' && formData.bookingLink && (
+        <div className="alert alert-success">
+          <div className="alert-icon">✅</div>
+          <div className="alert-content">
+            <strong>Success!</strong>
+            <p>Thank you! We've received your information and will contact you within 24 hours.</p>
+            <div style={{ marginTop: '15px', padding: '15px', background: '#f0f9ff', borderRadius: '8px', border: '1px solid #3b82f6' }}>
+              <strong style={{ display: 'block', marginBottom: '10px', color: '#1e40af' }}>📅 Book Your Free Consultation</strong>
+              <a 
+                href={formData.bookingLink} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                style={{
+                  display: 'inline-block',
+                  padding: '10px 20px',
+                  background: '#3b82f6',
+                  color: 'white',
+                  textDecoration: 'none',
+                  borderRadius: '5px',
+                  fontWeight: 'bold',
+                  marginTop: '10px'
+                }}
+              >
+                Schedule Now →
+              </a>
+            </div>
           </div>
         </div>
       )}

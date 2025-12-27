@@ -146,7 +146,11 @@ export default async function handler(req, res) {
         name: leadData.name,
         email: leadData.email,
         phone: leadData.phone,
+        company: leadData.company || '',
         service: leadData.service,
+        budget: leadData.budget || '',
+        preferredTime: leadData.preferredTime || '',
+        message: leadData.message || '',
         date: new Date().toISOString()
       },
       type: 'notification'
@@ -155,13 +159,75 @@ export default async function handler(req, res) {
       return { success: false, error: error.message };
     }) : Promise.resolve({ success: false, skipped: true, reason: 'No owner email configured' });
 
-    // Wait for emails (but don't fail if they fail)
-    await Promise.allSettled([confirmationEmailPromise, notificationEmailPromise]);
+    // Send WhatsApp notifications (if enabled) - non-blocking
+    const config = getClientConfig();
+    const whatsappPromises = [];
+    
+    if (config.features.whatsapp && config.whatsapp.enabled) {
+      // Send to owner
+      if (config.whatsapp.ownerWhatsAppNumber) {
+        const ownerWhatsappPromise = sendWhatsApp({
+          to: config.whatsapp.ownerWhatsAppNumber,
+          template: 'ownerNotification',
+          data: {
+            name: leadData.name,
+            email: leadData.email,
+            phone: leadData.phone,
+            company: leadData.company || '',
+            service: leadData.service,
+            budget: leadData.budget || '',
+            preferredTime: leadData.preferredTime || '',
+            message: leadData.message || '',
+            date: new Date().toISOString()
+          },
+          type: 'notification'
+        }).catch(error => {
+          logError('Failed to send WhatsApp notification to owner', error);
+          return { success: false, error: error.message };
+        });
+        whatsappPromises.push(ownerWhatsappPromise);
+      }
+      
+      // Send confirmation to lead (optional)
+      if (config.whatsapp.sendToLead && leadData.phone) {
+        const leadWhatsappNumber = formatWhatsAppNumber(leadData.phone);
+        if (leadWhatsappNumber) {
+          const bookingLink = getBookingUrl();
+          const leadWhatsappPromise = sendWhatsApp({
+            to: leadWhatsappNumber,
+            template: 'leadConfirmation',
+            data: {
+              name: leadData.name,
+              service: leadData.service,
+              bookingLink: bookingLink
+            },
+            type: 'confirmation'
+          }).catch(error => {
+            logError('Failed to send WhatsApp confirmation to lead', error);
+            return { success: false, error: error.message };
+          });
+          whatsappPromises.push(leadWhatsappPromise);
+        }
+      }
+    }
+    
+    // Wait for all notifications (but don't fail if they fail)
+    await Promise.allSettled([
+      confirmationEmailPromise, 
+      notificationEmailPromise,
+      ...whatsappPromises
+    ]);
 
     logRequest(req.method, req.url, 200, Date.now() - startTime);
     logInfo('Lead submitted successfully', { email: leadData.email });
 
-    // Return success
+    // Get booking link if enabled
+    const bookingLink = getBookingUrl();
+    const showBooking = config.features.booking && 
+                        config.booking.enabled && 
+                        config.booking.showAfterSubmission;
+
+    // Return success with optional booking link
     return res.status(200).json({
       success: true,
       message: 'Thank you! We\'ve received your information and will contact you within 24 hours.',
@@ -169,7 +235,14 @@ export default async function handler(req, res) {
         name: leadData.name,
         email: leadData.email,
         service: leadData.service
-      }
+      },
+      ...(showBooking && bookingLink && {
+        booking: {
+          enabled: true,
+          link: bookingLink,
+          provider: config.booking.provider
+        }
+      })
     });
 
   } catch (error) {

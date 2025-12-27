@@ -128,3 +128,4 @@ If it still doesn't work:
 
 **Most common issue:** Sheet not shared with service account email! Make sure Step 4 is completed.
 
+
