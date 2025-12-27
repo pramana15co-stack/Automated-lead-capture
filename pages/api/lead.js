@@ -78,6 +78,11 @@ export default async function handler(req, res) {
       }
     } catch (sheetsError) {
       logError('Google Sheets save error', sheetsError);
+      logError('Full error details', {
+        message: sheetsError.message,
+        stack: sheetsError.stack,
+        name: sheetsError.name
+      });
       
       // Provide more helpful error messages with specific guidance
       let errorMessage = 'Failed to save lead to Google Sheets. Please try again.';
@@ -91,15 +96,18 @@ export default async function handler(req, res) {
       } else if (errorMsg.includes('invalid') && errorMsg.includes('json')) {
         errorMessage = 'Google Sheets credentials format is invalid.';
         helpText = 'Please verify GOOGLE_SHEETS_CREDENTIALS is valid JSON (all on one line).';
-      } else if (errorMsg.includes('permission') || errorMsg.includes('access') || errorMsg.includes('403')) {
+      } else if (errorMsg.includes('permission') || errorMsg.includes('access') || errorMsg.includes('403') || errorMsg.includes('forbidden')) {
         errorMessage = 'Google Sheets access denied.';
-        helpText = 'Please share your Google Sheet with the service account email (from GOOGLE_SHEETS_CREDENTIALS) and give it Editor permission.';
+        helpText = 'Please share your Google Sheet with the service account email (from GOOGLE_SHEETS_CREDENTIALS → client_email) and give it Editor permission. This is the most common issue!';
       } else if (errorMsg.includes('not found') || errorMsg.includes('404')) {
         errorMessage = 'Google Sheet not found.';
         helpText = 'Please verify GOOGLE_SHEET_ID is correct and the sheet exists.';
       } else if (errorMsg.includes('unauthorized') || errorMsg.includes('401')) {
         errorMessage = 'Google Sheets authentication failed.';
         helpText = 'Please verify GOOGLE_SHEETS_CREDENTIALS is correct and the service account key is valid.';
+      } else if (errorMsg.includes('sheet not found') || errorMsg.includes('sheet')) {
+        errorMessage = 'Sheet tab not found.';
+        helpText = 'Please ensure your Google Sheet has a tab named "Leads" or "Sheet1", or the first tab will be used.';
       }
       
       // Return error so user knows it failed
@@ -108,7 +116,8 @@ export default async function handler(req, res) {
         success: false,
         error: errorMessage,
         help: helpText || undefined,
-        details: process.env.NODE_ENV === 'development' ? sheetsError.message : undefined
+        details: process.env.NODE_ENV === 'development' ? sheetsError.message : undefined,
+        diagnostic: 'Visit /api/test-services to see detailed error information'
       });
     }
 
