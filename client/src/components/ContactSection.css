@@ -69,8 +69,8 @@
 .contact-email:hover,
 .contact-service:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  border-color: #1f2937;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.12);
+  border-color: #2563eb;
 }
 
 .contact-icon {
@@ -81,9 +81,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #f3f4f6;
+  background: #eff6ff;
   border-radius: 10px;
-  color: #1f2937;
+  color: #2563eb;
 }
 
 .contact-email h3,
@@ -102,14 +102,14 @@
 }
 
 .contact-link {
-  color: #1f2937;
+  color: #2563eb;
   text-decoration: none;
   transition: all 0.2s ease;
   display: inline-block;
 }
 
 .contact-link:hover {
-  color: #111827;
+  color: #1d4ed8;
   text-decoration: underline;
 }
 
