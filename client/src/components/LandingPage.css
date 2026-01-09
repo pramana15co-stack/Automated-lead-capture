@@ -70,16 +70,16 @@
   padding: 12px 24px;
   font-size: 14px;
   font-weight: 600;
-  background: #059669;
+  background: #1f2937;
   color: white;
   border-radius: 6px;
   transition: all 0.2s ease;
 }
 
 .btn-nav:hover {
-  background: #047857;
+  background: #111827;
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(5, 150, 105, 0.3);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 /* Hero Section */
@@ -89,7 +89,7 @@
   display: flex;
   align-items: center;
   padding: 160px 40px 120px;
-  background: linear-gradient(135deg, #1a1f2e 0%, #2d3748 50%, #1a1f2e 100%);
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
   color: white;
   overflow: hidden;
 }
@@ -102,8 +102,8 @@
   right: 0;
   bottom: 0;
   background: 
-    radial-gradient(circle at 20% 30%, rgba(16, 185, 129, 0.12) 0%, transparent 50%),
-    radial-gradient(circle at 80% 70%, rgba(5, 150, 105, 0.08) 0%, transparent 50%);
+    radial-gradient(circle at 20% 30%, rgba(59, 130, 246, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(99, 102, 241, 0.1) 0%, transparent 50%);
   animation: pulse 8s ease-in-out infinite;
 }
 
@@ -206,7 +206,7 @@
 }
 
 .gradient-text {
-  color: #10b981;
+  color: #60a5fa;
   display: block;
   font-weight: 600;
 }
@@ -533,7 +533,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, #059669 0%, #047857 100%);
+  background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
   opacity: 0;
   transition: opacity 0.4s ease;
 }
@@ -607,7 +607,7 @@
   left: 0;
   right: 0;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(5, 150, 105, 0.2), transparent);
+  background: linear-gradient(90deg, transparent, rgba(79, 70, 229, 0.2), transparent);
 }
 
 .benefits-grid {
@@ -637,7 +637,7 @@
   left: 0;
   right: 0;
   height: 5px;
-  background: linear-gradient(135deg, #059669 0%, #10b981 50%, #047857 100%);
+  background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 50%, #EC4899 100%);
   transform: scaleX(0);
   transition: transform 0.3s ease;
 }
@@ -648,8 +648,8 @@
 
 .benefit-card:hover {
   transform: translateY(-15px);
-  box-shadow: 0 30px 60px rgba(5, 150, 105, 0.25);
-  border-color: #059669;
+  box-shadow: 0 30px 60px rgba(79, 70, 229, 0.25);
+  border-color: #4F46E5;
 }
 
 .benefit-icon {
@@ -686,7 +686,7 @@
   left: 0;
   right: 0;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(5, 150, 105, 0.2), transparent);
+  background: linear-gradient(90deg, transparent, rgba(79, 70, 229, 0.2), transparent);
 }
 
 .testimonials-grid {
@@ -923,7 +923,7 @@
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(90deg, #059669, #10b981);
+  background: #1f2937;
 }
 
 .form-header {
@@ -1008,7 +1008,7 @@
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(90deg, #059669, #10b981);
+  background: linear-gradient(90deg, #1f2937, #4b5563);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.4s ease;
@@ -1032,7 +1032,7 @@
 .flow-icon {
   width: 64px;
   height: 64px;
-  background: linear-gradient(135deg, #059669 0%, #047857 100%);
+  background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
   border-radius: 12px;
   display: flex;
   align-items: center;
@@ -1043,12 +1043,12 @@
   margin: 0 auto 20px;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 4px 12px rgba(5, 150, 105, 0.25);
+  box-shadow: 0 4px 12px rgba(31, 41, 55, 0.2);
 }
 
 .flow-step:hover .flow-icon {
   transform: scale(1.1) rotate(5deg);
-  box-shadow: 0 6px 20px rgba(5, 150, 105, 0.35);
+  box-shadow: 0 6px 20px rgba(31, 41, 55, 0.3);
 }
 
 .flow-step h3 {
@@ -1115,7 +1115,7 @@
 
 .flow-arrow {
   font-size: 1.5rem;
-  color: #10b981;
+  color: #9ca3af;
   font-weight: 300;
   flex-shrink: 0;
   animation: slideIn 0.8s ease-out forwards;
@@ -1206,7 +1206,7 @@
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(90deg, #059669, #10b981);
+  background: linear-gradient(90deg, #1f2937, #4b5563);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.4s ease;
@@ -1256,7 +1256,7 @@
   left: 0;
   right: 0;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(5, 150, 105, 0.2), transparent);
+  background: linear-gradient(90deg, transparent, rgba(79, 70, 229, 0.2), transparent);
 }
 
 .pricing-currency-toggle {
@@ -1324,7 +1324,7 @@
   left: 0;
   right: 0;
   height: 4px;
-  background: linear-gradient(90deg, #059669, #10b981);
+  background: linear-gradient(90deg, #1f2937, #4b5563);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.4s ease;
@@ -1398,7 +1398,7 @@
 }
 
 .package-card-popular {
-  border-color: #059669;
+  border-color: #1f2937;
   border-width: 2px;
 }
 
@@ -1411,13 +1411,13 @@
   top: -12px;
   left: 50%;
   transform: translateX(-50%);
-  background: #059669;
+  background: #1f2937;
   color: white;
   padding: 6px 16px;
   border-radius: 6px;
   font-size: 0.75rem;
   font-weight: 600;
-  box-shadow: 0 2px 8px rgba(5, 150, 105, 0.3);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   letter-spacing: 0.02em;
 }
 
@@ -1462,30 +1462,30 @@
   font-size: 0.9375rem;
   font-weight: 600;
   border-radius: 8px;
-  background: #059669;
+  background: #1f2937;
   color: white;
   border: none;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
-  box-shadow: 0 2px 8px rgba(5, 150, 105, 0.25);
+  box-shadow: 0 2px 8px rgba(31, 41, 55, 0.2);
 }
 
 .btn-package:hover {
-  background: #047857;
+  background: #111827;
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(5, 150, 105, 0.35);
+  box-shadow: 0 6px 16px rgba(31, 41, 55, 0.3);
 }
 
 .btn-package-primary {
-  background: #059669;
+  background: #1f2937;
   color: white;
   border: none;
 }
 
 .btn-package-primary:hover {
-  background: #047857;
-  box-shadow: 0 6px 16px rgba(5, 150, 105, 0.35);
+  background: #111827;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 /* Scroll Animation */
@@ -1642,7 +1642,7 @@
 .who-this-is-for-icon {
   width: 40px;
   height: 40px;
-  background: linear-gradient(135deg, #059669 0%, #047857 100%);
+  background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
   border-radius: 8px;
   display: flex;
   align-items: center;
@@ -1798,7 +1798,7 @@
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(90deg, #059669, #10b981);
+  background: linear-gradient(90deg, #1f2937, #4b5563);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.4s ease;
