@@ -14,10 +14,44 @@ import CaseStudy from './CaseStudy';
  */
 const LandingPage = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [currency, setCurrency] = useState('USD');
 
   useEffect(() => {
     setIsVisible(true);
+    
+    // Intersection Observer for scroll animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-in');
+        }
+      });
+    }, observerOptions);
+
+    // Observe all sections
+    const sections = document.querySelectorAll('.animate-on-scroll');
+    sections.forEach(section => observer.observe(section));
+
+    return () => {
+      sections.forEach(section => observer.unobserve(section));
+    };
   }, []);
+
+  const pricing = {
+    USD: {
+      setup: { min: 1000, max: 1300 },
+      support: 130
+    },
+    AUD: {
+      setup: { min: 1500, max: 2000 },
+      support: 200
+    }
+  };
 
   const handleCTAClick = () => {
     setTimeout(() => {
@@ -113,7 +147,7 @@ const LandingPage = () => {
       </section>
 
       {/* What We Do Section */}
-      <section id="what-we-do" className="what-we-do-section">
+      <section id="what-we-do" className="what-we-do-section animate-on-scroll">
         <div className="container">
           <div className="section-header">
             <span className="section-label">What We Do</span>
@@ -148,7 +182,7 @@ const LandingPage = () => {
       </section>
 
       {/* How It Works Section */}
-      <section id="how-it-works" className="enquiry-flow-section">
+      <section id="how-it-works" className="enquiry-flow-section animate-on-scroll">
         <div className="container">
           <div className="section-header">
             <span className="section-label">How It Works</span>
@@ -187,7 +221,7 @@ const LandingPage = () => {
       </section>
 
       {/* Automation Channels Section */}
-      <section className="automation-channels-section">
+      <section className="automation-channels-section animate-on-scroll">
         <div className="container">
           <div className="section-header">
             <span className="section-label">Our Capabilities</span>
@@ -227,7 +261,7 @@ const LandingPage = () => {
       </section>
 
       {/* Who This Is For Section */}
-      <section className="who-this-is-for-section">
+      <section className="who-this-is-for-section animate-on-scroll">
         <div className="container">
           <div className="section-header">
             <span className="section-label">Who This Is For</span>
@@ -258,7 +292,7 @@ const LandingPage = () => {
       </section>
 
       {/* Pricing Section */}
-      <section id="pricing" className="packages-section">
+      <section id="pricing" className="packages-section animate-on-scroll">
         <div className="container">
           <div className="section-header">
             <span className="section-label">Pricing</span>
@@ -267,12 +301,28 @@ const LandingPage = () => {
               Final pricing depends on complexity and is confirmed after a short walkthrough.
             </p>
           </div>
+          <div className="pricing-currency-toggle">
+            <button 
+              className={`currency-btn ${currency === 'USD' ? 'active' : ''}`}
+              onClick={() => setCurrency('USD')}
+            >
+              USD ($)
+            </button>
+            <button 
+              className={`currency-btn ${currency === 'AUD' ? 'active' : ''}`}
+              onClick={() => setCurrency('AUD')}
+            >
+              AUD ($)
+            </button>
+          </div>
           <div className="packages-grid">
-            <div className="package-card">
+            <div className="package-card package-card-animated">
               <div className="package-header">
                 <h3 className="package-name">Automation Setup</h3>
                 <div className="package-price">
-                  <span className="price-amount">AUD 1,500 – 2,000</span>
+                  <span className="price-amount">
+                    {currency} {pricing[currency].setup.min.toLocaleString()} – {pricing[currency].setup.max.toLocaleString()}
+                  </span>
                   <span className="price-period">one-time</span>
                 </div>
               </div>
@@ -298,11 +348,13 @@ const LandingPage = () => {
                 Request a Walkthrough
               </button>
             </div>
-            <div className="package-card">
+            <div className="package-card package-card-animated">
               <div className="package-header">
                 <h3 className="package-name">Ongoing Support (Optional)</h3>
                 <div className="package-price">
-                  <span className="price-amount">AUD 200</span>
+                  <span className="price-amount">
+                    {currency} {pricing[currency].support.toLocaleString()}
+                  </span>
                   <span className="price-period">/ month</span>
                 </div>
               </div>
@@ -333,7 +385,7 @@ const LandingPage = () => {
       </section>
 
       {/* Why Businesses Choose Pramana15 */}
-      <section className="why-choose-section">
+      <section className="why-choose-section animate-on-scroll">
         <div className="container">
           <div className="section-header">
             <span className="section-label">Why Choose Us</span>
@@ -373,7 +425,7 @@ const LandingPage = () => {
       </section>
 
       {/* Features Section */}
-      <section id="features" className="features">
+      <section id="features" className="features animate-on-scroll">
         <div className="container">
           <div className="section-header">
             <span className="section-label">Complete Solution</span>
