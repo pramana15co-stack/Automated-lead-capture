@@ -347,7 +347,7 @@ const LeadCaptureForm = () => {
         className="btn btn-primary btn-submit"
         disabled={isSubmitting}
       >
-        {isSubmitting ? 'Submitting...' : 'Book a Free Consultation'}
+        {isSubmitting ? 'Submitting...' : 'Request a Walkthrough'}
       </button>
 
       {/* Success Message */}
