@@ -15,23 +15,6 @@ const Footer = () => {
         <div className="footer-content">
           <div className="footer-section">
             <Logo size="medium" />
-            <p className="footer-description">
-              Pramana15 delivers enterprise-grade lead capture and automation solutions 
-              built by experienced full-stack developers. Production-ready systems trusted 
-              by coaches and businesses worldwide. Serving clients globally with professional 
-              development services.
-            </p>
-            <div className="footer-social">
-              <span className="social-label">Follow Us:</span>
-              <div className="social-links">
-                {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                <a href="https://www.linkedin.com/company/pramana15" target="_blank" rel="noopener noreferrer" className="social-link" aria-label="LinkedIn">LinkedIn</a>
-                {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                <a href="https://www.twitter.com/pramana15" target="_blank" rel="noopener noreferrer" className="social-link" aria-label="Twitter">Twitter</a>
-                {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                <a href="https://www.facebook.com/pramana15" target="_blank" rel="noopener noreferrer" className="social-link" aria-label="Facebook">Facebook</a>
-              </div>
-            </div>
           </div>
 
           <div className="footer-section">
@@ -49,35 +32,6 @@ const Footer = () => {
             <ul className="footer-links">
               <li><a href="/privacy">Privacy Policy</a></li>
               <li><a href="/terms">Terms of Service</a></li>
-              <li><a href="/cookies">Cookie Policy</a></li>
-              <li><a href="/refund">Refund Policy</a></li>
-            </ul>
-          </div>
-
-          <div className="footer-section">
-            <h4 className="footer-heading">Contact Info</h4>
-            <ul className="footer-contact">
-              <li>
-                <span className="contact-icon">🌍</span>
-                <div>
-                  <strong>Service Area</strong>
-                  <p>Global - Worldwide Coverage</p>
-                </div>
-              </li>
-              <li>
-                <span className="contact-icon">📧</span>
-                <div>
-                  <strong>Email</strong>
-                  <p><a href="mailto:pramana15.co@gmail.com">pramana15.co@gmail.com</a></p>
-                </div>
-              </li>
-              <li>
-                <span className="contact-icon">🌍</span>
-                <div>
-                  <strong>Service Area</strong>
-                  <p>Global - Serving clients worldwide</p>
-                </div>
-              </li>
             </ul>
           </div>
         </div>
@@ -87,11 +41,6 @@ const Footer = () => {
             <p className="copyright">
               © {currentYear} Pramana15. All rights reserved.
             </p>
-            <div className="footer-badges">
-              <span className="footer-badge">🔒 Secure</span>
-              <span className="footer-badge">✅ Verified</span>
-              <span className="footer-badge">⭐ Trusted</span>
-            </div>
           </div>
         </div>
       </div>

@@ -41,7 +41,7 @@ const LandingPage = () => {
               <a href="#portfolio" className="nav-link">Portfolio</a>
               <a href="#contact" className="nav-link">Contact</a>
               <button className="btn btn-nav" onClick={handleCTAClick}>
-                Stop Missing Enquiries
+                Request a Walkthrough
               </button>
             </div>
           </div>
@@ -54,26 +54,25 @@ const LandingPage = () => {
         <div className="container">
           <div className="hero-content">
             <div className="hero-badge">
-              <span>🏆 Trusted by Service Businesses | Fast Setup in 3-5 Days</span>
+              <span>Professional automation systems for service businesses</span>
             </div>
             <h1 className="hero-headline">
-              Stop Missing Enquiries
-              <span className="gradient-text"> with Smart Automation</span>
+              Automation systems that ensure
+              <span className="gradient-text"> no enquiry goes unanswered</span>
             </h1>
             <p className="hero-subheadline">
-              Capture every lead instantly. Get WhatsApp alerts, AI voice confirmations, and automated follow-ups. 
-              Never lose a hot lead again, even after business hours.
+              We design response and follow-up systems for businesses that rely on incoming enquiries.
             </p>
             <div className="hero-cta-group">
               <button 
                 className="btn btn-primary btn-large btn-pulse"
                 onClick={handleCTAClick}
               >
-                Book a 10-Min Demo
+                Request a Walkthrough
                 <span className="btn-arrow">→</span>
               </button>
               <a href="#how-it-works" className="btn btn-secondary btn-large">
-                See How Automation Works
+                See How It Works
               </a>
             </div>
           </div>
@@ -113,45 +112,75 @@ const LandingPage = () => {
         </div>
       </section>
 
-      {/* How We Stop You Missing Enquiries */}
+      {/* What We Do Section */}
+      <section id="what-we-do" className="what-we-do-section">
+        <div className="container">
+          <div className="section-header">
+            <span className="section-label">What We Do</span>
+            <h2 className="section-title">What We Do</h2>
+            <p className="section-subtitle">
+              We help businesses respond faster to website enquiries by combining instant acknowledgement, automated follow-ups, and clear handover to human teams.
+            </p>
+          </div>
+          <div className="what-we-do-grid">
+            <div className="what-we-do-item">
+              <div className="what-we-do-icon">✓</div>
+              <h3>Instant enquiry acknowledgement</h3>
+            </div>
+            <div className="what-we-do-item">
+              <div className="what-we-do-icon">✓</div>
+              <h3>Smart notifications to your team</h3>
+            </div>
+            <div className="what-we-do-item">
+              <div className="what-we-do-icon">✓</div>
+              <h3>Automated follow-ups</h3>
+            </div>
+            <div className="what-we-do-item">
+              <div className="what-we-do-icon">✓</div>
+              <h3>Optional voice confirmation</h3>
+            </div>
+            <div className="what-we-do-item">
+              <div className="what-we-do-icon">✓</div>
+              <h3>Human takeover at any time</h3>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* How It Works Section */}
       <section id="how-it-works" className="enquiry-flow-section">
         <div className="container">
           <div className="section-header">
             <span className="section-label">How It Works</span>
-            <h2 className="section-title">How We Stop You Missing Enquiries</h2>
+            <h2 className="section-title">How It Works</h2>
             <p className="section-subtitle">
-              A simple flow that ensures every enquiry gets attention, instantly
+              A simple flow that ensures every enquiry gets attention
             </p>
           </div>
           <div className="flow-container">
             <div className="flow-step">
-              <div className="flow-icon">🌐</div>
-              <h3>Website Enquiry</h3>
-              <p>Lead submits form on your website</p>
+              <div className="flow-icon">1</div>
+              <h3>An enquiry is submitted on your website</h3>
             </div>
             <div className="flow-arrow">→</div>
             <div className="flow-step">
-              <div className="flow-icon">💬</div>
-              <h3>Instant WhatsApp Alert</h3>
-              <p>You get notified immediately on WhatsApp</p>
-            </div>
-            <div className="flow-arrow">→</div>
-            <div className="flow-step flow-step-optional">
-              <div className="flow-icon">📞</div>
-              <h3>AI Voice Confirmation</h3>
-              <p>Optional: AI calls to confirm serious enquiries</p>
+              <div className="flow-icon">2</div>
+              <h3>The enquiry is acknowledged instantly</h3>
             </div>
             <div className="flow-arrow">→</div>
             <div className="flow-step">
-              <div className="flow-icon">👤</div>
-              <h3>Human Callback</h3>
-              <p>You or your team takes over for personal touch</p>
+              <div className="flow-icon">3</div>
+              <h3>Your team is notified immediately</h3>
             </div>
             <div className="flow-arrow">→</div>
             <div className="flow-step">
-              <div className="flow-icon">🔄</div>
-              <h3>Automated Follow-ups</h3>
-              <p>Smart reminders keep leads engaged</p>
+              <div className="flow-icon">4</div>
+              <h3>Follow-ups happen automatically if needed</h3>
+            </div>
+            <div className="flow-arrow">→</div>
+            <div className="flow-step">
+              <div className="flow-icon">5</div>
+              <h3>Humans step in to close the conversation</h3>
             </div>
           </div>
         </div>
@@ -197,94 +226,106 @@ const LandingPage = () => {
         </div>
       </section>
 
-      {/* Service Packages Section */}
-      <section id="packages" className="packages-section">
+      {/* Who This Is For Section */}
+      <section className="who-this-is-for-section">
         <div className="container">
           <div className="section-header">
-            <span className="section-label">Choose Your Plan</span>
-            <h2 className="section-title">Service Packages</h2>
+            <span className="section-label">Who This Is For</span>
+            <h2 className="section-title">Who This Is For</h2>
             <p className="section-subtitle">
-              Select the automation level that fits your business needs
+              Our automation systems work best for specific types of businesses
+            </p>
+          </div>
+          <div className="who-this-is-for-grid">
+            <div className="who-this-is-for-column">
+              <h3 className="who-this-is-for-heading">Best suited for:</h3>
+              <ul className="who-this-is-for-list">
+                <li>Service businesses</li>
+                <li>Local businesses</li>
+                <li>Agencies</li>
+                <li>Small teams that rely on enquiries</li>
+              </ul>
+            </div>
+            <div className="who-this-is-for-column">
+              <h3 className="who-this-is-for-heading">Not ideal for:</h3>
+              <ul className="who-this-is-for-list">
+                <li>Large enterprises</li>
+                <li>Companies with complex internal CRMs</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Pricing Section */}
+      <section id="pricing" className="packages-section">
+        <div className="container">
+          <div className="section-header">
+            <span className="section-label">Pricing</span>
+            <h2 className="section-title">Automation Setup</h2>
+            <p className="section-subtitle">
+              Final pricing depends on complexity and is confirmed after a short walkthrough.
             </p>
           </div>
           <div className="packages-grid">
             <div className="package-card">
               <div className="package-header">
-                <h3 className="package-name">CORE</h3>
+                <h3 className="package-name">Automation Setup</h3>
+                <div className="package-price">
+                  <span className="price-amount">AUD 1,500 – 2,000</span>
+                  <span className="price-period">one-time</span>
+                </div>
               </div>
               <div className="package-features">
                 <div className="package-feature">
                   <span className="feature-check">✓</span>
-                  <span>Instant lead capture</span>
+                  <span>Setup of response automation</span>
                 </div>
                 <div className="package-feature">
                   <span className="feature-check">✓</span>
-                  <span>Email notifications</span>
+                  <span>Notification workflows</span>
                 </div>
                 <div className="package-feature">
                   <span className="feature-check">✓</span>
-                  <span>AI chat assistant</span>
+                  <span>Follow-up logic</span>
                 </div>
                 <div className="package-feature">
                   <span className="feature-check">✓</span>
-                  <span>Lead dashboard</span>
+                  <span>Deployment and testing</span>
                 </div>
               </div>
               <button className="btn btn-package" onClick={handleCTAClick}>
-                Get Started
-              </button>
-            </div>
-            <div className="package-card package-card-popular">
-              <div className="popular-badge">Most Popular</div>
-              <div className="package-header">
-                <h3 className="package-name">PRO</h3>
-              </div>
-              <div className="package-features">
-                <div className="package-feature">
-                  <span className="feature-check">✓</span>
-                  <span>Everything in CORE</span>
-                </div>
-                <div className="package-feature">
-                  <span className="feature-check">✓</span>
-                  <span>WhatsApp alerts</span>
-                </div>
-                <div className="package-feature">
-                  <span className="feature-check">✓</span>
-                  <span>Booking integration</span>
-                </div>
-                <div className="package-feature">
-                  <span className="feature-check">✓</span>
-                  <span>After-hours auto responses</span>
-                </div>
-              </div>
-              <button className="btn btn-package btn-package-primary" onClick={handleCTAClick}>
-                Get Started
+                Request a Walkthrough
               </button>
             </div>
             <div className="package-card">
               <div className="package-header">
-                <h3 className="package-name">PREMIUM</h3>
+                <h3 className="package-name">Ongoing Support (Optional)</h3>
+                <div className="package-price">
+                  <span className="price-amount">AUD 200</span>
+                  <span className="price-period">/ month</span>
+                </div>
               </div>
               <div className="package-features">
                 <div className="package-feature">
                   <span className="feature-check">✓</span>
-                  <span>Everything in PRO</span>
+                  <span>Monitoring</span>
                 </div>
                 <div className="package-feature">
                   <span className="feature-check">✓</span>
-                  <span>AI voice call automation</span>
+                  <span>Minor adjustments</span>
                 </div>
                 <div className="package-feature">
                   <span className="feature-check">✓</span>
-                  <span>Smart lead routing</span>
+                  <span>Reliability checks</span>
                 </div>
                 <div className="package-feature">
                   <span className="feature-check">✓</span>
-                  <span>Priority automation setup</span>
+                  <span>Priority support</span>
                 </div>
               </div>
               <button className="btn btn-package" onClick={handleCTAClick}>
-                Get Started
+                Request a Walkthrough
               </button>
             </div>
           </div>
@@ -559,10 +600,10 @@ const LandingPage = () => {
           <div className="form-container">
             <div className="form-header">
               <span className="section-label">Get Started</span>
-              <h2 className="form-title">Stop Missing Enquiries</h2>
+              <h2 className="form-title">Request a Walkthrough</h2>
               <p className="form-subtitle">
-                Book a 10-minute demo and see how automation can transform your lead handling. 
-                Fast setup, no missed opportunities, works 24/7.
+                See how our automation systems can help ensure no enquiry goes unanswered. 
+                We'll show you the system and discuss your specific needs.
               </p>
             </div>
             <LeadCaptureForm />
