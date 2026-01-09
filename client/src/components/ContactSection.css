@@ -1,150 +1,116 @@
 /* Contact Section Styles */
 
 .contact-section {
-  padding: 100px 40px;
-  background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 50%, #EC4899 100%);
-  color: white;
+  padding: 80px 40px;
+  background: #f9fafb;
+  color: #111827;
   position: relative;
-  overflow: hidden;
-}
-
-.contact-section::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
-  opacity: 0.3;
 }
 
 .contact-content {
   position: relative;
   z-index: 1;
-  max-width: 1400px;
+  max-width: 900px;
   margin: 0 auto;
   width: 100%;
 }
 
 .contact-header {
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: 48px;
 }
 
 .contact-title {
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-weight: 700;
-  margin-bottom: 20px;
-  color: white;
+  margin-bottom: 16px;
+  color: #111827;
 }
 
 .contact-subtitle {
-  font-size: 1.25rem;
-  opacity: 0.95;
+  font-size: 1.125rem;
+  color: #6b7280;
   max-width: 600px;
   margin: 0 auto;
   line-height: 1.6;
 }
 
 .contact-subdetail {
-  font-size: 0.9rem;
-  opacity: 0.8;
-  color: white;
-  margin-top: 5px;
+  font-size: 0.875rem;
+  color: #9ca3af;
+  margin-top: 8px;
   display: block;
 }
 
-.contact-info-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 30px;
-  margin-bottom: 60px;
+.contact-info-compact {
+  margin-bottom: 0;
 }
 
-.contact-card {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 20px;
-  padding: 40px 30px;
-  text-align: center;
+.contact-main {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.contact-email,
+.contact-service {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 32px;
+  background: white;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
   transition: all 0.3s ease;
 }
 
-.contact-card:hover {
-  transform: translateY(-10px);
-  background: rgba(255, 255, 255, 0.15);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+.contact-email:hover,
+.contact-service:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border-color: #059669;
 }
 
 .contact-icon {
-  font-size: 3.5rem;
-  margin-bottom: 20px;
-  display: block;
+  font-size: 2rem;
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f0fdf4;
+  border-radius: 10px;
+  color: #059669;
 }
 
-.contact-card h3 {
-  font-size: 1.5rem;
+.contact-email h3,
+.contact-service h3 {
+  font-size: 1.125rem;
   font-weight: 600;
-  margin-bottom: 15px;
-  color: white;
+  margin-bottom: 8px;
+  color: #111827;
 }
 
 .contact-detail {
-  font-size: 1.1rem;
-  opacity: 0.95;
-  color: white;
+  font-size: 1rem;
+  color: #111827;
   display: block;
+  font-weight: 500;
 }
 
 .contact-link {
-  color: white;
+  color: #059669;
   text-decoration: none;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
   display: inline-block;
 }
 
 .contact-link:hover {
-  opacity: 1;
+  color: #047857;
   text-decoration: underline;
-  transform: scale(1.05);
-}
-
-.countries {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: center;
-  margin-top: 15px;
-}
-
-.country-tag {
-  background: rgba(255, 255, 255, 0.2);
-  padding: 8px 16px;
-  border-radius: 20px;
-  font-size: 0.9rem;
-  font-weight: 500;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  transition: all 0.3s ease;
-}
-
-.country-tag:hover {
-  background: rgba(255, 255, 255, 0.3);
-  transform: scale(1.05);
-}
-
-.contact-cta {
-  text-align: center;
-  padding-top: 40px;
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.cta-text {
-  font-size: 1.3rem;
-  font-weight: 500;
-  margin-bottom: 30px;
-  opacity: 0.95;
 }
 
 /* Responsive */
@@ -158,21 +124,17 @@
   }
 
   .contact-subtitle {
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
 
-  .contact-info-grid {
+  .contact-main {
     grid-template-columns: 1fr;
     gap: 20px;
   }
 
-  .contact-card {
-    padding: 30px 20px;
-  }
-
-  .countries {
-    flex-direction: column;
-    align-items: center;
+  .contact-email,
+  .contact-service {
+    padding: 24px;
   }
 }
 

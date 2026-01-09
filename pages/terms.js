@@ -201,7 +201,7 @@ const TermsOfService = () => {
                   If you have any questions about these Terms of Service, please contact us:
                 </p>
                 <p>
-                  <strong>Email:</strong> <a href="mailto:pramana15.co@gmail.com">pramana15.co@gmail.com</a>
+                  <strong>Email:</strong> <a href="mailto:pramana15@pramana15.com">pramana15@pramana15.com</a>
                 </p>
               </section>
             </div>

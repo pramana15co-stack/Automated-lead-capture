@@ -72,7 +72,6 @@ const LandingPage = () => {
             <div className="nav-links">
               <a href="#features" className="nav-link">Features</a>
               <a href="#testimonials" className="nav-link">Results</a>
-              <a href="#portfolio" className="nav-link">Portfolio</a>
               <a href="#contact" className="nav-link">Contact</a>
               <button className="btn btn-nav" onClick={handleCTAClick}>
                 Request a Walkthrough
@@ -185,36 +184,58 @@ const LandingPage = () => {
       <section id="how-it-works" className="enquiry-flow-section animate-on-scroll">
         <div className="container">
           <div className="section-header">
-            <span className="section-label">How It Works</span>
+            <span className="section-label">Process</span>
             <h2 className="section-title">How It Works</h2>
             <p className="section-subtitle">
-              A simple flow that ensures every enquiry gets attention
+              A streamlined process that ensures every enquiry receives immediate attention and proper follow-up
             </p>
           </div>
           <div className="flow-container">
-            <div className="flow-step">
+            <div className="flow-step flow-step-detailed">
               <div className="flow-icon">1</div>
-              <h3>An enquiry is submitted on your website</h3>
+              <h3>Enquiry Submission</h3>
+              <p>Someone fills out your contact form or submits an enquiry through your website. The system captures all details instantly.</p>
             </div>
             <div className="flow-arrow">→</div>
-            <div className="flow-step">
+            <div className="flow-step flow-step-detailed">
               <div className="flow-icon">2</div>
-              <h3>The enquiry is acknowledged instantly</h3>
+              <h3>Instant Acknowledgement</h3>
+              <p>The enquiry receives an immediate automated confirmation. The person knows their message was received and will be handled.</p>
             </div>
             <div className="flow-arrow">→</div>
-            <div className="flow-step">
+            <div className="flow-step flow-step-detailed">
               <div className="flow-icon">3</div>
-              <h3>Your team is notified immediately</h3>
+              <h3>Team Notification</h3>
+              <p>Your team is notified immediately via email and WhatsApp (if enabled). You know about the enquiry within seconds, not hours.</p>
             </div>
             <div className="flow-arrow">→</div>
-            <div className="flow-step">
+            <div className="flow-step flow-step-detailed">
               <div className="flow-icon">4</div>
-              <h3>Follow-ups happen automatically if needed</h3>
+              <h3>Automated Follow-ups</h3>
+              <p>If no response is needed immediately, the system automatically sends follow-up messages at optimal intervals to keep the enquiry warm.</p>
             </div>
             <div className="flow-arrow">→</div>
-            <div className="flow-step">
+            <div className="flow-step flow-step-detailed">
               <div className="flow-icon">5</div>
-              <h3>Humans step in to close the conversation</h3>
+              <h3>Human Handover</h3>
+              <p>Your team steps in at the right moment to have a personal conversation and close the deal. Automation handles the routine; you handle the relationship.</p>
+            </div>
+          </div>
+          <div className="flow-benefits">
+            <div className="flow-benefit">
+              <div className="flow-benefit-icon">⚡</div>
+              <h4>Instant Response</h4>
+              <p>Enquiries are acknowledged within seconds</p>
+            </div>
+            <div className="flow-benefit">
+              <div className="flow-benefit-icon">🔄</div>
+              <h4>Never Miss</h4>
+              <p>Multiple notification channels ensure visibility</p>
+            </div>
+            <div className="flow-benefit">
+              <div className="flow-benefit-icon">🤝</div>
+              <h4>Human Touch</h4>
+              <p>Automation handles routine; you handle relationships</p>
             </div>
           </div>
         </div>
@@ -264,27 +285,36 @@ const LandingPage = () => {
       <section className="who-this-is-for-section animate-on-scroll">
         <div className="container">
           <div className="section-header">
-            <span className="section-label">Who This Is For</span>
+            <span className="section-label">Ideal Clients</span>
             <h2 className="section-title">Who This Is For</h2>
             <p className="section-subtitle">
-              Our automation systems work best for specific types of businesses
+              Our automation systems are designed for businesses that need reliable, fast response systems without complex infrastructure
             </p>
           </div>
           <div className="who-this-is-for-grid">
             <div className="who-this-is-for-column">
+              <div className="who-this-is-for-icon">✓</div>
               <h3 className="who-this-is-for-heading">Best suited for:</h3>
+              <p className="who-this-is-for-description">
+                Service-based businesses that depend on incoming enquiries to generate revenue. Our systems work exceptionally well for:
+              </p>
               <ul className="who-this-is-for-list">
-                <li>Service businesses</li>
-                <li>Local businesses</li>
-                <li>Agencies</li>
-                <li>Small teams that rely on enquiries</li>
+                <li><strong>Service businesses</strong> – Consultants, coaches, agencies, and professional service providers who need to respond quickly to enquiries</li>
+                <li><strong>Local businesses</strong> – Companies serving specific geographic areas where fast response times create competitive advantage</li>
+                <li><strong>Small to medium teams</strong> – Businesses with 1-20 employees where every enquiry matters and automation multiplies team capacity</li>
+                <li><strong>Businesses with enquiry-driven revenue</strong> – Companies where each lead directly impacts revenue and response speed affects conversion</li>
               </ul>
             </div>
             <div className="who-this-is-for-column">
+              <div className="who-this-is-for-icon">ℹ</div>
               <h3 className="who-this-is-for-heading">Not ideal for:</h3>
+              <p className="who-this-is-for-description">
+                Our systems are optimized for simplicity and speed. They may not be the best fit if you need:
+              </p>
               <ul className="who-this-is-for-list">
-                <li>Large enterprises</li>
-                <li>Companies with complex internal CRMs</li>
+                <li><strong>Large enterprises</strong> – Companies with 500+ employees typically need more complex, integrated CRM solutions</li>
+                <li><strong>Complex internal systems</strong> – Businesses with extensive existing CRM infrastructure may require custom enterprise solutions</li>
+                <li><strong>High-volume transactional businesses</strong> – Companies processing thousands of automated transactions per day may need more robust systems</li>
               </ul>
             </div>
           </div>
@@ -391,34 +421,39 @@ const LandingPage = () => {
             <span className="section-label">Why Choose Us</span>
             <h2 className="section-title">Why Businesses Choose Pramana15</h2>
             <p className="section-subtitle">
-              Built specifically for service businesses that can't afford to miss enquiries
+              We focus on what matters: ensuring no enquiry goes unanswered and your team can respond faster than competitors
             </p>
           </div>
           <div className="why-choose-grid">
             <div className="why-choose-item">
               <div className="why-choose-icon">🎯</div>
-              <h3>Designed for Service Businesses</h3>
-              <p>Every feature is built with service providers in mind</p>
+              <h3>Purpose-Built for Service Businesses</h3>
+              <p>Every feature addresses real challenges service providers face: fast response times, after-hours coverage, and ensuring no enquiry falls through the cracks. We understand your business model.</p>
             </div>
             <div className="why-choose-item">
               <div className="why-choose-icon">⚡</div>
-              <h3>Fast Setup (3–5 Days)</h3>
-              <p>Get up and running quickly without long delays</p>
+              <h3>Fast Setup, Quick Results</h3>
+              <p>Most systems are operational within 3-5 days. No months-long implementations. We focus on getting you value quickly, not on complex configurations that delay your results.</p>
             </div>
             <div className="why-choose-item">
-              <div className="why-choose-icon">🚫</div>
-              <h3>No Missed Enquiries</h3>
-              <p>Multiple channels ensure every lead gets attention</p>
+              <div className="why-choose-icon">🔄</div>
+              <h3>Multiple Notification Channels</h3>
+              <p>Email, WhatsApp, and optional voice calls ensure your team is notified through the channels they actually use. No single point of failure—if one channel is down, others still work.</p>
             </div>
             <div className="why-choose-item">
               <div className="why-choose-icon">🌙</div>
-              <h3>Works After Business Hours</h3>
-              <p>Automation handles enquiries even when you're offline</p>
+              <h3>24/7 Enquiry Handling</h3>
+              <p>Automation works when you don't. Enquiries submitted at 2 AM are acknowledged immediately and your team is notified. No more "we'll get back to you tomorrow" delays that lose business.</p>
             </div>
             <div className="why-choose-item">
-              <div className="why-choose-icon">👥</div>
-              <h3>Human Takeover Anytime</h3>
-              <p>You stay in control and can step in whenever needed</p>
+              <div className="why-choose-icon">🤝</div>
+              <h3>Human Control, Always</h3>
+              <p>Automation handles routine tasks, but you're always in control. Step in at any time, override automated responses, and maintain the personal touch that builds relationships.</p>
+            </div>
+            <div className="why-choose-item">
+              <div className="why-choose-icon">📊</div>
+              <h3>Complete Visibility</h3>
+              <p>See every enquiry, track response times, and understand what's working. Simple dashboards show you what matters without overwhelming complexity.</p>
             </div>
           </div>
         </div>
@@ -506,48 +541,6 @@ const LandingPage = () => {
                 <li>SMTP compatible</li>
                 <li>RESTful APIs</li>
               </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Portfolio/Showcase Section */}
-      <section id="portfolio" className="portfolio-section">
-        <div className="container">
-          <div className="section-header">
-            <span className="section-label">Our Work</span>
-            <h2 className="section-title">Built for Real Businesses</h2>
-            <p className="section-subtitle">
-              Production-ready solutions trusted by coaches and businesses worldwide
-            </p>
-          </div>
-          <div className="portfolio-grid">
-            <div className="portfolio-card">
-              <div className="portfolio-image">
-                <div className="portfolio-placeholder">📈</div>
-              </div>
-              <div className="portfolio-content">
-                <h3>Lead Capture System</h3>
-                <p>Complete automation system with form validation, email automation, and Google Sheets integration.</p>
-              </div>
-            </div>
-            <div className="portfolio-card">
-              <div className="portfolio-image">
-                <div className="portfolio-placeholder">🤖</div>
-              </div>
-              <div className="portfolio-content">
-                <h3>AI Chatbot Integration</h3>
-                <p>Intelligent chatbot with OpenAI GPT integration, rate limiting, and smart fallback responses.</p>
-              </div>
-            </div>
-            <div className="portfolio-card">
-              <div className="portfolio-image">
-                <div className="portfolio-placeholder">📧</div>
-              </div>
-              <div className="portfolio-content">
-                <h3>Email Automation</h3>
-                <p>Professional email system with HTML templates, duplicate prevention, and SMTP integration.</p>
-              </div>
             </div>
           </div>
         </div>

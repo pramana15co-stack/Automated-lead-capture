@@ -113,7 +113,7 @@ const PrivacyPolicy = () => {
                   <li>Request restriction of processing</li>
                   <li>Data portability</li>
                 </ul>
-                <p>To exercise these rights, please contact us at <a href="mailto:pramana15.co@gmail.com">pramana15.co@gmail.com</a>.</p>
+                <p>To exercise these rights, please contact us at <a href="mailto:pramana15@pramana15.com">pramana15@pramana15.com</a>.</p>
               </section>
 
               <section>
@@ -157,7 +157,7 @@ const PrivacyPolicy = () => {
                   If you have any questions about this Privacy Policy, please contact us:
                 </p>
                 <p>
-                  <strong>Email:</strong> <a href="mailto:pramana15.co@gmail.com">pramana15.co@gmail.com</a>
+                  <strong>Email:</strong> <a href="mailto:pramana15@pramana15.com">pramana15@pramana15.com</a>
                 </p>
               </section>
             </div>
