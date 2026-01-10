@@ -3,7 +3,7 @@ import Logo from './Logo';
 import Footer from './Footer';
 import BusinessLeadForm from './BusinessLeadForm';
 import BusinessChatbot from './BusinessChatbot';
-import './BusinessPage.css';
+// CSS imported in _app.js for Next.js compatibility
 
 /**
  * Reusable Business Page Component

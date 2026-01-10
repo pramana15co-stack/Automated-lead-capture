@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Logo from './Logo';
 import Footer from './Footer';
-import './BusinessShowcase.css';
+// CSS imported in _app.js for Next.js compatibility
 
 /**
  * Business Showcase Home Page
