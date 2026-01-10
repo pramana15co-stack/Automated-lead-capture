@@ -17,6 +17,8 @@ import '../client/src/components/Logo.css'
 import '../client/src/components/TrustBadges.css'
 import '../client/src/components/CaseStudy.css'
 import '../client/src/components/LogoSection.css'
+import '../client/src/components/BusinessShowcase.css'
+import '../client/src/components/BusinessPage.css'
 
 /**
  * Next.js App Component

@@ -1,9 +1,9 @@
-import LandingPage from '../client/src/components/LandingPage'
+import BusinessShowcase from '../client/src/components/BusinessShowcase'
 
 /**
- * Home Page
- * Renders the main landing page
+ * Home Page - Business Type Showcase
+ * Shows different business types we can help with automation
  */
 export default function Home() {
-  return <LandingPage />
+  return <BusinessShowcase />
 }
