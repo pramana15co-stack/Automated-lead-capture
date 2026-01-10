@@ -255,12 +255,71 @@ const BusinessPage = ({ businessConfig }) => {
         </div>
       </section>
 
+      {/* What's Next Section */}
+      <section id="whats-next" className="whats-next-section animate-on-scroll">
+        <div className="container">
+          <div className="section-header">
+            <span className="section-label">Next Steps</span>
+            <h2 className="section-title">What Happens After You Submit the Form?</h2>
+            <p className="section-subtitle">
+              Here's exactly what happens when you request a custom automation system for your {businessConfig.businessType} business
+            </p>
+          </div>
+
+          <div className="next-steps-grid">
+            <div className="next-step-card">
+              <div className="step-number-badge">1</div>
+              <h3>We Receive Your Enquiry</h3>
+              <p>Your form submission is instantly captured and sent to our team. You'll receive an automated confirmation email.</p>
+            </div>
+            <div className="next-step-card">
+              <div className="step-number-badge">2</div>
+              <h3>Initial Review (Within 24 Hours)</h3>
+              <p>Our team reviews your requirements and prepares a personalized response with relevant questions about your business.</p>
+            </div>
+            <div className="next-step-card">
+              <div className="step-number-badge">3</div>
+              <h3>Free Consultation Call</h3>
+              <p>We'll schedule a 30-minute call to understand your current processes, pain points, and automation goals in detail.</p>
+            </div>
+            <div className="next-step-card">
+              <div className="step-number-badge">4</div>
+              <h3>Custom Proposal</h3>
+              <p>Within 2-3 days, we'll send you a detailed proposal outlining the exact automation system we'll build, timeline, and pricing.</p>
+            </div>
+            <div className="next-step-card">
+              <div className="step-number-badge">5</div>
+              <h3>Approval & Setup</h3>
+              <p>Once you approve, we'll begin building your custom system. Setup typically takes 3-5 business days.</p>
+            </div>
+            <div className="next-step-card">
+              <div className="step-number-badge">6</div>
+              <h3>Launch & Support</h3>
+              <p>We'll deploy your system, provide training, and offer ongoing support to ensure everything runs smoothly.</p>
+            </div>
+          </div>
+
+          <div className="contact-info-box">
+            <h3>📧 Have Questions? Contact Us Directly</h3>
+            <p>Prefer to discuss your needs before filling out the form? Reach out to us:</p>
+            <div className="contact-details">
+              <a href="mailto:pramana15@pramana15.com" className="contact-link">
+                📧 pramana15@pramana15.com
+              </a>
+            </div>
+            <p className="contact-note">
+              <strong>Response Time:</strong> We respond to all enquiries within 24 hours during business days (Monday-Friday).
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="cta-section animate-on-scroll">
         <div className="container">
           <div className="cta-content">
             <h2>Ready to Automate Your {businessConfig.businessType} Business?</h2>
-            <p>This entire page is a demo of what we can build for you. Get in touch to discuss your custom automation system.</p>
+            <p>This entire page is a demo of what we can build for you. Fill out the form above to get started.</p>
             <button 
               className="btn btn-primary btn-large"
               onClick={() => {
@@ -270,7 +329,7 @@ const BusinessPage = ({ businessConfig }) => {
                 }
               }}
             >
-              Request Your Custom Solution
+              Fill Out the Form Above →
             </button>
           </div>
         </div>

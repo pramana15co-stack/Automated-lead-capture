@@ -11,7 +11,8 @@ const BusinessChatbot = ({ businessType, config }) => {
   const [messages, setMessages] = useState([
     {
       type: 'bot',
-      text: config.initialMessage || "Hello! I'm here to help you learn about our automation systems. What would you like to know?"
+      text: config.initialMessage || "Hello! I'm here to help you learn about our automation systems. What would you like to know?",
+      timestamp: new Date()
     }
   ]);
   const [inputValue, setInputValue] = useState('');
@@ -30,7 +31,11 @@ const BusinessChatbot = ({ businessType, config }) => {
     const userMessage = inputValue.trim();
     setInputValue('');
     
-    setMessages(prev => [...prev, { type: 'user', text: userMessage }]);
+    setMessages(prev => [...prev, { 
+      type: 'user', 
+      text: userMessage,
+      timestamp: new Date()
+    }]);
     setIsLoading(true);
 
     try {
@@ -57,7 +62,11 @@ const BusinessChatbot = ({ businessType, config }) => {
   };
 
   const handleQuickAction = async (query) => {
-    setMessages(prev => [...prev, { type: 'user', text: query }]);
+    setMessages(prev => [...prev, { 
+      type: 'user', 
+      text: query,
+      timestamp: new Date()
+    }]);
     setIsLoading(true);
 
     try {
@@ -69,14 +78,16 @@ const BusinessChatbot = ({ businessType, config }) => {
       if (response.data.success) {
         setMessages(prev => [...prev, { 
           type: 'bot', 
-          text: response.data.response.message || response.data.response
+          text: response.data.response.message || response.data.response,
+          timestamp: new Date()
         }]);
       }
     } catch (error) {
       console.error('Chatbot error:', error);
       setMessages(prev => [...prev, { 
         type: 'bot', 
-        text: config.errorMessage || "I apologize, but I'm having trouble right now. Please fill out the form above!"
+        text: config.errorMessage || "I apologize, but I'm having trouble right now. Please fill out the form above!",
+        timestamp: new Date()
       }]);
     } finally {
       setIsLoading(false);
@@ -119,6 +130,11 @@ const BusinessChatbot = ({ businessType, config }) => {
                       {i < message.text.split('\n').length - 1 && <br />}
                     </React.Fragment>
                   ))}
+                  {message.timestamp && (
+                    <div className="message-timestamp">
+                      {message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                    </div>
+                  )}
                 </div>
               </div>
             ))}
@@ -134,8 +150,11 @@ const BusinessChatbot = ({ businessType, config }) => {
             <div ref={messagesEndRef} />
           </div>
 
-          {messages.length === 1 && config.quickActions && (
+          {(messages.length === 1 || (messages.length === 2 && messages[1].type === 'user')) && config.quickActions && (
             <div className="chatbot-quick-actions">
+              <div style={{ fontSize: '11px', color: '#6b7280', marginBottom: '8px', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+                Quick Questions:
+              </div>
               {config.quickActions.map((action, index) => (
                 <button
                   key={index}
