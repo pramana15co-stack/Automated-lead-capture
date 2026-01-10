@@ -215,8 +215,8 @@ const BusinessPage = ({ businessConfig }) => {
           </div>
           <div className="pricing-card">
             <div className="pricing-header">
-              <h3>Complete Automation System</h3>
-              <p>Everything you need to never miss an enquiry</p>
+              <h3>Base Automation System</h3>
+              <p>Core features to never miss an enquiry</p>
             </div>
             <div className="pricing-details">
               <div className="pricing-item">
@@ -233,24 +233,161 @@ const BusinessPage = ({ businessConfig }) => {
               </div>
             </div>
             <div className="pricing-features">
-              <h4>What's Included:</h4>
+              <h4>Base Package Includes:</h4>
               <ul>
                 {businessConfig.pricingFeatures.map((feature, index) => (
                   <li key={index}>✓ {feature}</li>
                 ))}
               </ul>
             </div>
-            <button 
-              className="btn btn-primary btn-large"
-              onClick={() => {
-                const formElement = document.getElementById('demo-form');
-                if (formElement) {
-                  formElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-              }}
-            >
-              Get Started Now
-            </button>
+          </div>
+
+          {/* Add-On Services */}
+          <div className="addons-section">
+            <h3 className="addons-title">Optional Add-On Services</h3>
+            <p className="addons-subtitle">Enhance your automation system with these powerful features</p>
+            
+            <div className="addons-grid">
+              <div className="addon-card">
+                <div className="addon-icon">📱</div>
+                <h4>Meta Ads Setup</h4>
+                <p className="addon-description">Complete Facebook & Instagram ad campaign setup with automated lead capture integration</p>
+                <div className="addon-pricing">
+                  <span className="addon-price">${currency === 'USD' ? '500' : '750'}</span>
+                  <span className="addon-period">one-time</span>
+                </div>
+                <ul className="addon-features">
+                  <li>✓ Ad account setup & configuration</li>
+                  <li>✓ Campaign creation & optimization</li>
+                  <li>✓ Lead form integration</li>
+                  <li>✓ Automated lead capture</li>
+                </ul>
+              </div>
+
+              <div className="addon-card">
+                <div className="addon-icon">💬</div>
+                <h4>WhatsApp Notification System</h4>
+                <p className="addon-description">Automated WhatsApp notifications for new enquiries, reminders, and follow-ups</p>
+                <div className="addon-pricing">
+                  <span className="addon-price">${currency === 'USD' ? '400' : '600'}</span>
+                  <span className="addon-period">one-time</span>
+                </div>
+                <div className="addon-monthly">
+                  <span className="addon-price">+ ${currency === 'USD' ? '50' : '75'}</span>
+                  <span className="addon-period">/month</span>
+                </div>
+                <ul className="addon-features">
+                  <li>✓ WhatsApp Business API setup</li>
+                  <li>✓ Instant enquiry notifications</li>
+                  <li>✓ Automated follow-up messages</li>
+                  <li>✓ Two-way communication</li>
+                </ul>
+              </div>
+
+              <div className="addon-card">
+                <div className="addon-icon">🎙️</div>
+                <h4>Voice Assistant System</h4>
+                <p className="addon-description">AI-powered voice assistant for phone enquiries, appointment booking, and customer support</p>
+                <div className="addon-pricing">
+                  <span className="addon-price">${currency === 'USD' ? '800' : '1200'}</span>
+                  <span className="addon-period">one-time</span>
+                </div>
+                <div className="addon-monthly">
+                  <span className="addon-price">+ ${currency === 'USD' ? '80' : '120'}</span>
+                  <span className="addon-period">/month</span>
+                </div>
+                <ul className="addon-features">
+                  <li>✓ 24/7 phone answering system</li>
+                  <li>✓ Natural language processing</li>
+                  <li>✓ Appointment scheduling via voice</li>
+                  <li>✓ Multi-language support</li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="pricing-note-box">
+              <strong>💡 Flexible Pricing:</strong> Choose only the services you need. Base package is required, add-ons are optional.
+            </div>
+          </div>
+
+          <button 
+            className="btn btn-primary btn-large"
+            onClick={() => {
+              const formElement = document.getElementById('demo-form');
+              if (formElement) {
+                formElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }
+            }}
+            style={{ marginTop: '40px', width: '100%', maxWidth: '600px', marginLeft: 'auto', marginRight: 'auto', display: 'block' }}
+          >
+            Get Started Now
+          </button>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="testimonials-section animate-on-scroll">
+        <div className="container">
+          <div className="section-header">
+            <span className="section-label">Client Success</span>
+            <h2 className="section-title">What Our Clients Say</h2>
+            <p className="section-subtitle">
+              Real results from businesses using our automation systems
+            </p>
+          </div>
+          <div className="testimonials-grid">
+            <div className="testimonial-card">
+              <div className="testimonial-content">
+                <div className="stars">★★★★★</div>
+                <p>"This automation system transformed our dental practice. We never miss a patient enquiry anymore, and the automated reminders have reduced no-shows by 40%. The setup was quick and the support is excellent."</p>
+              </div>
+              <div className="testimonial-author">
+                <div className="author-avatar">DR</div>
+                <div className="author-info">
+                  <div className="author-name">Dr. Robert Chen</div>
+                  <div className="author-title">Dental Practice Owner, Sydney</div>
+                </div>
+              </div>
+            </div>
+            <div className="testimonial-card">
+              <div className="testimonial-content">
+                <div className="stars">★★★★★</div>
+                <p>"As a real estate agent, I was losing leads constantly. This system captures every enquiry instantly, even on weekends. The WhatsApp integration is a game-changer - I respond to clients within minutes now."</p>
+              </div>
+              <div className="testimonial-author">
+                <div className="author-avatar">MJ</div>
+                <div className="author-info">
+                  <div className="author-name">Maria Johnson</div>
+                  <div className="author-title">Real Estate Agent, Melbourne</div>
+                </div>
+              </div>
+            </div>
+            <div className="testimonial-card">
+              <div className="testimonial-content">
+                <div className="stars">★★★★★</div>
+                <p>"The voice assistant system handles all our phone enquiries 24/7. It's like having a receptionist that never sleeps. Our clients love the instant response, and we've seen a 250% increase in booked consultations."</p>
+              </div>
+              <div className="testimonial-author">
+                <div className="author-avatar">TS</div>
+                <div className="author-info">
+                  <div className="author-name">Tom Smith</div>
+                  <div className="author-title">Business Coach, Brisbane</div>
+                </div>
+              </div>
+            </div>
+            <div className="testimonial-card">
+              <div className="testimonial-content">
+                <div className="stars">★★★★★</div>
+                <p>"The Meta Ads setup was seamless. They created our campaigns, integrated everything with the lead capture system, and we started getting qualified leads within days. ROI has been incredible."</p>
+              </div>
+              <div className="testimonial-author">
+                <div className="author-avatar">LK</div>
+                <div className="author-info">
+                  <div className="author-name">Lisa Kim</div>
+                  <div className="author-title">Fitness Studio Owner, Perth</div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>

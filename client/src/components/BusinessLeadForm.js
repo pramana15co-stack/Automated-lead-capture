@@ -14,7 +14,12 @@ const BusinessLeadForm = ({ businessType, config }) => {
     company: '',
     service: '',
     message: '',
-    businessType: businessType
+    businessType: businessType,
+    services: {
+      metaAds: false,
+      whatsapp: false,
+      voiceAssistant: false
+    }
   });
 
   const [errors, setErrors] = useState({});
@@ -191,6 +196,79 @@ const BusinessLeadForm = ({ businessType, config }) => {
           {errors.service && <span className="error-message">{errors.service}</span>}
         </div>
       )}
+
+      {/* Add-On Services Selection */}
+      <div className="form-group">
+        <label>Additional Services (Optional)</label>
+        <p className="form-hint">Select any additional services you'd like to include:</p>
+        <div className="services-checkboxes">
+          <label className="checkbox-label">
+            <input
+              type="checkbox"
+              name="metaAds"
+              checked={formData.services.metaAds}
+              onChange={(e) => {
+                setFormData(prev => ({
+                  ...prev,
+                  services: {
+                    ...prev.services,
+                    metaAds: e.target.checked
+                  }
+                }));
+              }}
+            />
+            <span className="checkbox-content">
+              <strong>📱 Meta Ads Setup</strong>
+              <span className="checkbox-price">+ ${typeof window !== 'undefined' && window.location.pathname.includes('/dental-clinic') ? '500' : '500'} one-time</span>
+              <span className="checkbox-desc">Facebook & Instagram ad campaign setup</span>
+            </span>
+          </label>
+
+          <label className="checkbox-label">
+            <input
+              type="checkbox"
+              name="whatsapp"
+              checked={formData.services.whatsapp}
+              onChange={(e) => {
+                setFormData(prev => ({
+                  ...prev,
+                  services: {
+                    ...prev.services,
+                    whatsapp: e.target.checked
+                  }
+                }));
+              }}
+            />
+            <span className="checkbox-content">
+              <strong>💬 WhatsApp Notification System</strong>
+              <span className="checkbox-price">+ ${typeof window !== 'undefined' && window.location.pathname.includes('/dental-clinic') ? '400' : '400'} setup + $50/month</span>
+              <span className="checkbox-desc">Automated WhatsApp notifications & messaging</span>
+            </span>
+          </label>
+
+          <label className="checkbox-label">
+            <input
+              type="checkbox"
+              name="voiceAssistant"
+              checked={formData.services.voiceAssistant}
+              onChange={(e) => {
+                setFormData(prev => ({
+                  ...prev,
+                  services: {
+                    ...prev.services,
+                    voiceAssistant: e.target.checked
+                  }
+                }));
+              }}
+            />
+            <span className="checkbox-content">
+              <strong>🎙️ Voice Assistant System</strong>
+              <span className="checkbox-price">+ ${typeof window !== 'undefined' && window.location.pathname.includes('/dental-clinic') ? '800' : '800'} setup + $80/month</span>
+              <span className="checkbox-desc">AI-powered phone answering & booking</span>
+            </span>
+          </label>
+        </div>
+      </div>
 
       <div className="form-group">
         <label htmlFor="message">{config.messageLabel || "Additional Message"}</label>
