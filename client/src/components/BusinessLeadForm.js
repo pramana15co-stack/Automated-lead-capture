@@ -118,16 +118,42 @@ const BusinessLeadForm = ({ businessType, config }) => {
       }
     } catch (error) {
       console.error('Form submission error:', error);
-      setSubmitStatus('error');
-      let errorMessage = 'Something went wrong. Please try again.';
       
-      if (error.response) {
-        errorMessage = error.response.data?.error || error.response.data?.message || errorMessage;
+      // Check if it's a timeout error
+      if (error.code === 'ECONNABORTED' || error.message?.includes('timeout')) {
+        // If timeout, check if we got a response (might have succeeded)
+        if (error.response && error.response.data && error.response.data.success) {
+          setSubmitStatus('success');
+          setTimeout(() => {
+            setSubmitStatus(null);
+          }, 8000);
+        } else {
+          setSubmitStatus('error');
+          setErrors({ submit: 'Request timed out. Your submission may have been received. Please check your email or try again.' });
+        }
+      } else if (error.response) {
+        // Server responded with error
+        const responseData = error.response.data;
+        if (responseData && responseData.success) {
+          // Sometimes success responses come through error handler
+          setSubmitStatus('success');
+          setTimeout(() => {
+            setSubmitStatus(null);
+          }, 8000);
+        } else {
+          setSubmitStatus('error');
+          const errorMessage = responseData?.error || responseData?.message || 'Something went wrong. Please try again.';
+          setErrors({ submit: errorMessage });
+        }
       } else if (error.request) {
-        errorMessage = 'Unable to connect to server. Please check your internet connection.';
+        // Request was made but no response received
+        setSubmitStatus('error');
+        setErrors({ submit: 'Unable to connect to server. Please check your internet connection and try again.' });
+      } else {
+        // Something else went wrong
+        setSubmitStatus('error');
+        setErrors({ submit: 'Something went wrong. Please try again.' });
       }
-      
-      setErrors({ submit: errorMessage });
     } finally {
       setIsSubmitting(false);
     }
