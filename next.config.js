@@ -73,6 +73,18 @@ const nextConfig = {
   
   // Enable standalone output for better Vercel deployment
   output: 'standalone',
+  
+  // Webpack configuration for CSS handling
+  webpack: (config, { isServer }) => {
+    // Ensure CSS files are processed correctly
+    if (!isServer) {
+      config.resolve.fallback = {
+        ...config.resolve.fallback,
+        fs: false,
+      };
+    }
+    return config;
+  },
 }
 
 module.exports = nextConfig
