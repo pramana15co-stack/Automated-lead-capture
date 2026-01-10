@@ -139,6 +139,14 @@ const BusinessPage = ({ businessConfig }) => {
               See how enquiries are captured, processed, and responded to automatically
             </p>
           </div>
+
+          {/* Video Showcase */}
+          <VideoShowcase
+            videoUrl={process.env.NEXT_PUBLIC_DEMO_VIDEO_URL || ""}
+            title="See How It Works"
+            description="Watch our automation system in action - from enquiry to response in seconds"
+          />
+
           <div className="workflow-steps">
             {businessConfig.workflow.map((step, index) => (
               <div key={index} className="workflow-step">
