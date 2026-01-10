@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Logo from './Logo';
 import Footer from './Footer';
+import VideoShowcase from './VideoShowcase';
 // CSS imported in _app.js for Next.js compatibility
 
 /**
@@ -322,6 +323,13 @@ const BusinessShowcase = () => {
               Every business-specific page includes working examples of our automation systems
             </p>
           </div>
+
+          {/* Video Showcase */}
+          <VideoShowcase
+            videoUrl={process.env.NEXT_PUBLIC_DEMO_VIDEO_URL || ""}
+            title="Watch Our Automation System in Action"
+            description="See how enquiries are captured, processed, and responded to automatically - all in real-time"
+          />
 
           <div className="demo-features-grid">
             <div className="demo-feature">
