@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { getApiUrl } from '../config/api';
 
@@ -26,6 +26,7 @@ const BusinessLeadForm = ({ businessType, config }) => {
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
+  const isSubmittingRef = useRef(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -72,18 +73,24 @@ const BusinessLeadForm = ({ businessType, config }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    e.stopPropagation();
+
+    // Prevent double submission using ref (more reliable than state)
+    if (isSubmittingRef.current || isSubmitting) {
+      return;
+    }
 
     if (!validate()) {
       return;
     }
 
+    isSubmittingRef.current = true;
     setIsSubmitting(true);
     setSubmitStatus(null);
+    setErrors({});
 
     try {
-      console.log('Submitting form data:', formData);
       const apiUrl = getApiUrl('/api/lead');
-      console.log('API URL:', apiUrl);
       
       const response = await axios.post(apiUrl, formData, {
         headers: {
@@ -96,12 +103,8 @@ const BusinessLeadForm = ({ businessType, config }) => {
         }
       });
 
-      console.log('Response received:', response.status, response.data);
-
       // Check if response indicates success
       if (response.data && response.data.success === true) {
-        console.log('Success! Setting success status');
-        setSubmitStatus('success');
         // Clear form only if not a duplicate (duplicate means it was already submitted)
         if (!response.data.duplicate) {
           setFormData({
@@ -120,31 +123,26 @@ const BusinessLeadForm = ({ businessType, config }) => {
             }
           });
         }
+        
+        // Set success status
+        setSubmitStatus('success');
+        setErrors({});
+        
         // Clear success message after 8 seconds
         setTimeout(() => {
           setSubmitStatus(null);
         }, 8000);
       } else {
-        console.log('Response does not indicate success:', response.data);
         setSubmitStatus('error');
         setErrors({ submit: response.data?.error || response.data?.message || 'Unexpected response from server.' });
       }
     } catch (error) {
-      console.error('Form submission error:', error);
-      console.error('Error details:', {
-        message: error.message,
-        code: error.code,
-        response: error.response?.data,
-        status: error.response?.status,
-        request: error.request
-      });
-      
       // Check if it's a timeout error
       if (error.code === 'ECONNABORTED' || error.message?.includes('timeout')) {
         // If timeout, check if we got a response (might have succeeded)
         if (error.response && error.response.data && error.response.data.success === true) {
-          console.log('Timeout but response indicates success');
           setSubmitStatus('success');
+          setErrors({});
           setTimeout(() => {
             setSubmitStatus(null);
           }, 8000);
@@ -155,12 +153,11 @@ const BusinessLeadForm = ({ businessType, config }) => {
       } else if (error.response) {
         // Server responded - check if it's actually a success response
         const responseData = error.response.data;
-        console.log('Error response data:', responseData);
         
         if (responseData && responseData.success === true) {
           // Success response came through error handler (status code might be non-2xx but success=true)
-          console.log('Success response in error handler');
           setSubmitStatus('success');
+          setErrors({});
           if (!responseData.duplicate) {
             setFormData({
               name: '',
@@ -189,17 +186,19 @@ const BusinessLeadForm = ({ businessType, config }) => {
         }
       } else if (error.request) {
         // Request was made but no response received
-        console.log('No response received from server');
         setSubmitStatus('error');
         setErrors({ submit: 'Unable to connect to server. Please check your internet connection and try again.' });
       } else {
         // Something else went wrong
-        console.log('Unknown error:', error);
         setSubmitStatus('error');
         setErrors({ submit: 'Something went wrong. Please try again.' });
       }
     } finally {
       setIsSubmitting(false);
+      // Reset ref after a short delay to prevent rapid re-submissions
+      setTimeout(() => {
+        isSubmittingRef.current = false;
+      }, 1000);
     }
   };
 
@@ -397,7 +396,7 @@ const BusinessLeadForm = ({ businessType, config }) => {
       </button>
 
       {submitStatus === 'success' && (
-        <div className="alert alert-success">
+        <div className="alert alert-success" key="success-message">
           <div className="alert-icon">✅</div>
           <div className="alert-content">
             <strong>Success!</strong>
