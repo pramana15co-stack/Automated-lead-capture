@@ -120,3 +120,4 @@ export default function MedicalPracticePage() {
   return <BusinessPage businessConfig={medicalPracticeConfig} />
 }
 
+

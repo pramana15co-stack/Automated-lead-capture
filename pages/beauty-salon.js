@@ -119,3 +119,4 @@ export default function BeautySalonPage() {
   return <BusinessPage businessConfig={beautySalonConfig} />
 }
 
+

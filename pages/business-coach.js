@@ -120,3 +120,4 @@ export default function BusinessCoachPage() {
   return <BusinessPage businessConfig={businessCoachConfig} />
 }
 
+

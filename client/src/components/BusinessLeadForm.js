@@ -81,14 +81,26 @@ const BusinessLeadForm = ({ businessType, config }) => {
     setSubmitStatus(null);
 
     try {
-      const response = await axios.post(getApiUrl('/api/lead'), formData, {
+      console.log('Submitting form data:', formData);
+      const apiUrl = getApiUrl('/api/lead');
+      console.log('API URL:', apiUrl);
+      
+      const response = await axios.post(apiUrl, formData, {
         headers: {
           'Content-Type': 'application/json'
         },
-        timeout: 30000
+        timeout: 30000,
+        validateStatus: function (status) {
+          // Accept any status code as success (we'll check response.data.success)
+          return status >= 200 && status < 500;
+        }
       });
 
-      if (response.data && response.data.success) {
+      console.log('Response received:', response.status, response.data);
+
+      // Check if response indicates success
+      if (response.data && response.data.success === true) {
+        console.log('Success! Setting success status');
         setSubmitStatus('success');
         // Clear form only if not a duplicate (duplicate means it was already submitted)
         if (!response.data.duplicate) {
@@ -113,16 +125,25 @@ const BusinessLeadForm = ({ businessType, config }) => {
           setSubmitStatus(null);
         }, 8000);
       } else {
+        console.log('Response does not indicate success:', response.data);
         setSubmitStatus('error');
         setErrors({ submit: response.data?.error || response.data?.message || 'Unexpected response from server.' });
       }
     } catch (error) {
       console.error('Form submission error:', error);
+      console.error('Error details:', {
+        message: error.message,
+        code: error.code,
+        response: error.response?.data,
+        status: error.response?.status,
+        request: error.request
+      });
       
       // Check if it's a timeout error
       if (error.code === 'ECONNABORTED' || error.message?.includes('timeout')) {
         // If timeout, check if we got a response (might have succeeded)
-        if (error.response && error.response.data && error.response.data.success) {
+        if (error.response && error.response.data && error.response.data.success === true) {
+          console.log('Timeout but response indicates success');
           setSubmitStatus('success');
           setTimeout(() => {
             setSubmitStatus(null);
@@ -132,25 +153,48 @@ const BusinessLeadForm = ({ businessType, config }) => {
           setErrors({ submit: 'Request timed out. Your submission may have been received. Please check your email or try again.' });
         }
       } else if (error.response) {
-        // Server responded with error
+        // Server responded - check if it's actually a success response
         const responseData = error.response.data;
-        if (responseData && responseData.success) {
-          // Sometimes success responses come through error handler
+        console.log('Error response data:', responseData);
+        
+        if (responseData && responseData.success === true) {
+          // Success response came through error handler (status code might be non-2xx but success=true)
+          console.log('Success response in error handler');
           setSubmitStatus('success');
+          if (!responseData.duplicate) {
+            setFormData({
+              name: '',
+              email: '',
+              phone: '',
+              company: '',
+              service: '',
+              message: '',
+              businessType: businessType,
+              contactPreference: '',
+              services: {
+                metaAds: false,
+                whatsapp: false,
+                voiceAssistant: false
+              }
+            });
+          }
           setTimeout(() => {
             setSubmitStatus(null);
           }, 8000);
         } else {
+          // Actual error response
           setSubmitStatus('error');
           const errorMessage = responseData?.error || responseData?.message || 'Something went wrong. Please try again.';
           setErrors({ submit: errorMessage });
         }
       } else if (error.request) {
         // Request was made but no response received
+        console.log('No response received from server');
         setSubmitStatus('error');
         setErrors({ submit: 'Unable to connect to server. Please check your internet connection and try again.' });
       } else {
         // Something else went wrong
+        console.log('Unknown error:', error);
         setSubmitStatus('error');
         setErrors({ submit: 'Something went wrong. Please try again.' });
       }

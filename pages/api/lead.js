@@ -158,75 +158,53 @@ export default async function handler(req, res) {
     logRequest(req.method, req.url, 200, Date.now() - startTime);
     logInfo('Lead submitted successfully', { email: leadData.email });
 
-    // Send response immediately
-    const response = res.status(200).json({
+    // Prepare response data
+    const responseData = {
       success: true,
       message: 'Thank you! We\'ve received your information and will contact you within 24 hours.',
       lead: {
         name: leadData.name,
         email: leadData.email,
         service: leadData.service
-      },
-      ...(showBooking && bookingLink && {
-        booking: {
-          enabled: true,
-          link: bookingLink,
-          provider: config.booking.provider
-        }
-      })
-    });
+      }
+    };
+
+    // Add booking link if enabled
+    if (showBooking && bookingLink) {
+      responseData.booking = {
+        enabled: true,
+        link: bookingLink,
+        provider: config.booking.provider
+      };
+    }
 
     // Send notifications in background (don't wait for them)
     // This prevents timeouts and improves user experience
-    setImmediate(async () => {
-      try {
-        // Send confirmation email to lead (non-blocking)
-        sendEmail({
-          to: leadData.email,
-          subject: 'Thank You for Your Interest!',
-          template: 'leadConfirmation',
-          data: {
-            name: leadData.name,
-            service: leadData.service
-          },
-          type: 'confirmation'
-        }).catch(error => {
-          logError('Failed to send confirmation email', error);
-        });
-
-        // Send notification email to owner (non-blocking)
-        const ownerEmail = process.env.OWNER_EMAIL || process.env.SMTP_USER;
-        if (ownerEmail) {
+    // Use process.nextTick to ensure response is sent first
+    process.nextTick(() => {
+      // Wrap in try-catch to prevent any errors from affecting the response
+      (async () => {
+        try {
+          // Send confirmation email to lead (non-blocking)
           sendEmail({
-            to: ownerEmail,
-            subject: `🎉 New Lead: ${leadData.name} - ${leadData.service}`,
-            template: 'ownerNotification',
+            to: leadData.email,
+            subject: 'Thank You for Your Interest!',
+            template: 'leadConfirmation',
             data: {
               name: leadData.name,
-              email: leadData.email,
-              phone: leadData.phone,
-              company: leadData.company || '',
-              businessType: leadData.businessType || '',
-              service: leadData.service,
-              budget: leadData.budget || '',
-              preferredTime: leadData.preferredTime || '',
-              message: leadData.message || '',
-              contactPreference: leadData.contactPreference || '',
-              services: leadData.services || {},
-              date: new Date().toISOString()
+              service: leadData.service
             },
-            type: 'notification'
+            type: 'confirmation'
           }).catch(error => {
-            logError('Failed to send notification email', error);
+            logError('Failed to send confirmation email', error);
           });
-        }
 
-        // Send WhatsApp notifications (if enabled) - non-blocking
-        if (config.features.whatsapp && config.whatsapp.enabled) {
-          // Send to owner
-          if (config.whatsapp.ownerWhatsAppNumber) {
-            sendWhatsApp({
-              to: config.whatsapp.ownerWhatsAppNumber,
+          // Send notification email to owner (non-blocking)
+          const ownerEmail = process.env.OWNER_EMAIL || process.env.SMTP_USER;
+          if (ownerEmail) {
+            sendEmail({
+              to: ownerEmail,
+              subject: `🎉 New Lead: ${leadData.name} - ${leadData.service}`,
               template: 'ownerNotification',
               data: {
                 name: leadData.name,
@@ -244,35 +222,64 @@ export default async function handler(req, res) {
               },
               type: 'notification'
             }).catch(error => {
-              logError('Failed to send WhatsApp notification to owner', error);
+              logError('Failed to send notification email', error);
             });
           }
-          
-          // Send confirmation to lead (optional)
-          if (config.whatsapp.sendToLead && leadData.phone) {
-            const leadWhatsappNumber = formatWhatsAppNumber(leadData.phone);
-            if (leadWhatsappNumber) {
+
+          // Send WhatsApp notifications (if enabled) - non-blocking
+          if (config.features.whatsapp && config.whatsapp.enabled) {
+            // Send to owner
+            if (config.whatsapp.ownerWhatsAppNumber) {
               sendWhatsApp({
-                to: leadWhatsappNumber,
-                template: 'leadConfirmation',
+                to: config.whatsapp.ownerWhatsAppNumber,
+                template: 'ownerNotification',
                 data: {
                   name: leadData.name,
+                  email: leadData.email,
+                  phone: leadData.phone,
+                  company: leadData.company || '',
+                  businessType: leadData.businessType || '',
                   service: leadData.service,
-                  bookingLink: bookingLink
+                  budget: leadData.budget || '',
+                  preferredTime: leadData.preferredTime || '',
+                  message: leadData.message || '',
+                  contactPreference: leadData.contactPreference || '',
+                  services: leadData.services || {},
+                  date: new Date().toISOString()
                 },
-                type: 'confirmation'
+                type: 'notification'
               }).catch(error => {
-                logError('Failed to send WhatsApp confirmation to lead', error);
+                logError('Failed to send WhatsApp notification to owner', error);
               });
             }
+            
+            // Send confirmation to lead (optional)
+            if (config.whatsapp.sendToLead && leadData.phone) {
+              const leadWhatsappNumber = formatWhatsAppNumber(leadData.phone);
+              if (leadWhatsappNumber) {
+                sendWhatsApp({
+                  to: leadWhatsappNumber,
+                  template: 'leadConfirmation',
+                  data: {
+                    name: leadData.name,
+                    service: leadData.service,
+                    bookingLink: bookingLink
+                  },
+                  type: 'confirmation'
+                }).catch(error => {
+                  logError('Failed to send WhatsApp confirmation to lead', error);
+                });
+              }
+            }
           }
+        } catch (error) {
+          logError('Error in background notification sending', error);
         }
-      } catch (error) {
-        logError('Error in background notification sending', error);
-      }
+      })();
     });
 
-    return response;
+    // Send response immediately - return after setting up background tasks
+    return res.status(200).json(responseData);
 
   } catch (error) {
     logError('Unexpected error in lead submission', error);

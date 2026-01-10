@@ -119,3 +119,4 @@ export default function RealEstatePage() {
   return <BusinessPage businessConfig={realEstateConfig} />
 }
 
+

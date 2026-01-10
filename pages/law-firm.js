@@ -120,3 +120,4 @@ export default function LawFirmPage() {
   return <BusinessPage businessConfig={lawFirmConfig} />
 }
 
+

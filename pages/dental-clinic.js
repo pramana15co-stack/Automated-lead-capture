@@ -119,3 +119,4 @@ export default function DentalClinicPage() {
   return <BusinessPage businessConfig={dentalConfig} />
 }
 
+

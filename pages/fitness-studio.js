@@ -120,3 +120,4 @@ export default function FitnessStudioPage() {
   return <BusinessPage businessConfig={fitnessStudioConfig} />
 }
 
+
