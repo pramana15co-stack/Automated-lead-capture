@@ -92,7 +92,12 @@ const BusinessLeadForm = ({ businessType, config }) => {
           company: '',
           service: '',
           message: '',
-          businessType: businessType
+          businessType: businessType,
+          services: {
+            metaAds: false,
+            whatsapp: false,
+            voiceAssistant: false
+          }
         });
         setTimeout(() => {
           setSubmitStatus(null);
