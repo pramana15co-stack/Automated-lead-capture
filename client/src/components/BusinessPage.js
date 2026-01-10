@@ -180,10 +180,10 @@ const BusinessPage = ({ businessConfig }) => {
             <div className="demo-chatbot-wrapper">
               <h3>🤖 AI Chatbot Demo</h3>
               <p className="demo-description">
-                Click the chat icon in the bottom right to interact with our AI chatbot. 
-                It can answer questions about {businessConfig.businessType} automation 24/7.
+                Try our AI chatbot below. It can answer questions about {businessConfig.businessType} automation 24/7.
+                This is exactly what we can build for your website.
               </p>
-              <BusinessChatbot businessType={businessConfig.id} config={businessConfig.chatbotConfig} />
+              <BusinessChatbot businessType={businessConfig.id} config={businessConfig.chatbotConfig} inline={true} />
             </div>
           </div>
         </div>

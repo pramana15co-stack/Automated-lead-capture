@@ -213,7 +213,7 @@ const BusinessShowcase = () => {
         <div className="container">
           <div className="hero-content">
             <div className="hero-badge">
-              <span>Demo Website - Showcasing Our Automation Capabilities</span>
+              <span>✨ Demo Website - Showcasing Our Automation Capabilities</span>
             </div>
             <h1 className="hero-headline">
               We Build Custom Automation Systems
@@ -226,6 +226,26 @@ const BusinessShowcase = () => {
             <div className="demo-notice">
               <strong>🎯 This is a Demo:</strong> All forms, chatbots, and automation systems shown here are working examples of what we can build for your business.
             </div>
+          </div>
+        </div>
+        
+        {/* Stats Section */}
+        <div className="hero-stats">
+          <div className="stat-card">
+            <div className="stat-number">24/7</div>
+            <div className="stat-label">Automated Response</div>
+          </div>
+          <div className="stat-card">
+            <div className="stat-number">100%</div>
+            <div className="stat-label">Lead Capture Rate</div>
+          </div>
+          <div className="stat-card">
+            <div className="stat-number">3-5</div>
+            <div className="stat-label">Days to Deploy</div>
+          </div>
+          <div className="stat-card">
+            <div className="stat-number">8+</div>
+            <div className="stat-label">Business Types Supported</div>
           </div>
         </div>
       </section>

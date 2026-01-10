@@ -5,9 +5,10 @@ import { getApiUrl } from '../config/api';
 /**
  * Business-Specific AI Chatbot
  * Customizable chatbot for different business types
+ * Supports both inline (embedded) and floating modes
  */
-const BusinessChatbot = ({ businessType, config }) => {
-  const [isOpen, setIsOpen] = useState(false);
+const BusinessChatbot = ({ businessType, config, inline = false }) => {
+  const [isOpen, setIsOpen] = useState(inline); // Inline mode starts open
   const [messages, setMessages] = useState([
     {
       type: 'bot',
@@ -94,6 +95,88 @@ const BusinessChatbot = ({ businessType, config }) => {
     }
   };
 
+  // If inline mode, render inline chatbot
+  if (inline) {
+    return (
+      <div className="chatbot-inline">
+        <div className="chatbot-window-inline">
+          <div className="chatbot-header">
+            <h3>{config.title || 'Ask Me Anything'}</h3>
+          </div>
+
+          <div className="chatbot-messages">
+            {messages.map((message, index) => (
+              <div 
+                key={index} 
+                className={`chatbot-message ${message.type === 'user' ? 'user-message' : 'bot-message'}`}
+              >
+                <div className="message-content">
+                  {message.text.split('\n').map((line, i) => (
+                    <React.Fragment key={i}>
+                      {line}
+                      {i < message.text.split('\n').length - 1 && <br />}
+                    </React.Fragment>
+                  ))}
+                  {message.timestamp && (
+                    <div className="message-timestamp">
+                      {message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                    </div>
+                  )}
+                </div>
+              </div>
+            ))}
+            
+            {isLoading && (
+              <div className="chatbot-message bot-message">
+                <div className="message-content">
+                  <span className="typing-indicator">...</span>
+                </div>
+              </div>
+            )}
+            
+            <div ref={messagesEndRef} />
+          </div>
+
+          {(messages.length === 1 || (messages.length === 2 && messages[1].type === 'user')) && config.quickActions && (
+            <div className="chatbot-quick-actions">
+              <div style={{ fontSize: '11px', color: '#6b7280', marginBottom: '8px', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+                Quick Questions:
+              </div>
+              {config.quickActions.map((action, index) => (
+                <button
+                  key={index}
+                  className="quick-action-btn"
+                  onClick={() => handleQuickAction(action.query)}
+                >
+                  {action.label}
+                </button>
+              ))}
+            </div>
+          )}
+
+          <form className="chatbot-input-form" onSubmit={handleSend}>
+            <input
+              type="text"
+              value={inputValue}
+              onChange={(e) => setInputValue(e.target.value)}
+              placeholder={config.inputPlaceholder || "Type your question..."}
+              className="chatbot-input"
+              disabled={isLoading}
+            />
+            <button 
+              type="submit" 
+              className="chatbot-send-btn"
+              disabled={!inputValue.trim() || isLoading}
+            >
+              Send
+            </button>
+          </form>
+        </div>
+      </div>
+    );
+  }
+
+  // Floating mode (default)
   return (
     <>
       <button 
