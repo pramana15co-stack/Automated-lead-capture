@@ -11,6 +11,9 @@ import { saveLead } from '../../lib/googleSheets';
 import { sendEmail } from '../../lib/email';
 import { checkRateLimit, getClientIP } from '../../lib/rateLimiter';
 import { logError, logInfo, logRequest, logWarn } from '../../lib/logger';
+import { getClientConfig } from '../../lib/config';
+import { sendWhatsApp, formatWhatsAppNumber } from '../../lib/whatsapp';
+import { getBookingUrl } from '../../lib/booking';
 
 export default async function handler(req, res) {
   const startTime = Date.now();
@@ -67,11 +70,18 @@ export default async function handler(req, res) {
       
       if (!saveResult.success) {
         if (saveResult.duplicate) {
-          logRequest(req.method, req.url, 409, Date.now() - startTime);
-          return res.status(409).json({
-            success: false,
-            error: 'This lead was already submitted recently. Please wait a few minutes.',
-            duplicate: true
+          // Treat duplicate as success since the original submission was successful
+          logRequest(req.method, req.url, 200, Date.now() - startTime);
+          logInfo('Duplicate lead submission (already submitted successfully)', { email: leadData.email });
+          return res.status(200).json({
+            success: true,
+            message: 'Thank you! We\'ve already received your enquiry and will contact you within 24 hours.',
+            duplicate: true,
+            lead: {
+              name: leadData.name,
+              email: leadData.email,
+              service: leadData.service
+            }
           });
         }
         throw new Error(saveResult.message || 'Failed to save lead');

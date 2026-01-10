@@ -90,27 +90,31 @@ const BusinessLeadForm = ({ businessType, config }) => {
 
       if (response.data && response.data.success) {
         setSubmitStatus('success');
-        setFormData({
-          name: '',
-          email: '',
-          phone: '',
-          company: '',
-          service: '',
-          message: '',
-          businessType: businessType,
-          contactPreference: '',
-          services: {
-            metaAds: false,
-            whatsapp: false,
-            voiceAssistant: false
-          }
-        });
+        // Clear form only if not a duplicate (duplicate means it was already submitted)
+        if (!response.data.duplicate) {
+          setFormData({
+            name: '',
+            email: '',
+            phone: '',
+            company: '',
+            service: '',
+            message: '',
+            businessType: businessType,
+            contactPreference: '',
+            services: {
+              metaAds: false,
+              whatsapp: false,
+              voiceAssistant: false
+            }
+          });
+        }
+        // Clear success message after 8 seconds
         setTimeout(() => {
           setSubmitStatus(null);
-        }, 5000);
+        }, 8000);
       } else {
         setSubmitStatus('error');
-        setErrors({ submit: response.data?.error || 'Unexpected response from server.' });
+        setErrors({ submit: response.data?.error || response.data?.message || 'Unexpected response from server.' });
       }
     } catch (error) {
       console.error('Form submission error:', error);
@@ -327,7 +331,7 @@ const BusinessLeadForm = ({ businessType, config }) => {
           <div className="alert-icon">✅</div>
           <div className="alert-content">
             <strong>Success!</strong>
-            <p>{config.successMessage || "Thank you! We've received your enquiry and will contact you soon."}</p>
+            <p>{config.successMessage || "Thank you! We've received your enquiry and will contact you within 24 hours."}</p>
           </div>
         </div>
       )}
