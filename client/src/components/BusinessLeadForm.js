@@ -15,6 +15,7 @@ const BusinessLeadForm = ({ businessType, config }) => {
     service: '',
     message: '',
     businessType: businessType,
+    contactPreference: '',
     services: {
       metaAds: false,
       whatsapp: false,
@@ -61,6 +62,10 @@ const BusinessLeadForm = ({ businessType, config }) => {
       newErrors.service = 'Please select a service';
     }
 
+    if (!formData.contactPreference) {
+      newErrors.contactPreference = 'Please select your preferred contact method';
+    }
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -93,6 +98,7 @@ const BusinessLeadForm = ({ businessType, config }) => {
           service: '',
           message: '',
           businessType: businessType,
+          contactPreference: '',
           services: {
             metaAds: false,
             whatsapp: false,
@@ -201,6 +207,26 @@ const BusinessLeadForm = ({ businessType, config }) => {
           {errors.service && <span className="error-message">{errors.service}</span>}
         </div>
       )}
+
+      {/* Contact Preference */}
+      <div className="form-group">
+        <label htmlFor="contactPreference">Preferred Contact Method *</label>
+        <p className="form-hint">How would you like us to contact you?</p>
+        <select
+          id="contactPreference"
+          name="contactPreference"
+          value={formData.contactPreference}
+          onChange={handleChange}
+          className={errors.contactPreference ? 'error' : ''}
+        >
+          <option value="">Select preferred contact method...</option>
+          <option value="Email">Email</option>
+          <option value="Phone">Phone Call</option>
+          <option value="WhatsApp">WhatsApp</option>
+          <option value="Any">Any Method</option>
+        </select>
+        {errors.contactPreference && <span className="error-message">{errors.contactPreference}</span>}
+      </div>
 
       {/* Add-On Services Selection */}
       <div className="form-group">
