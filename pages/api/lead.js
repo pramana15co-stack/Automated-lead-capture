@@ -177,10 +177,13 @@ export default async function handler(req, res) {
             email: leadData.email,
             phone: leadData.phone,
             company: leadData.company || '',
+            businessType: leadData.businessType || '',
             service: leadData.service,
             budget: leadData.budget || '',
             preferredTime: leadData.preferredTime || '',
             message: leadData.message || '',
+            contactPreference: leadData.contactPreference || '',
+            services: leadData.services || {},
             date: new Date().toISOString()
           },
           type: 'notification'
