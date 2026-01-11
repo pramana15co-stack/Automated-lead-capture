@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import { useEffect } from 'react'
+import { Analytics } from '@vercel/analytics/next'
 
 // Import global styles first
 import '../client/src/index.css'
@@ -55,6 +56,7 @@ export default function App({ Component, pageProps }) {
         <link rel="dns-prefetch" href="https://api.openai.com" />
       </Head>
       <Component {...pageProps} />
+      <Analytics />
     </>
   )
 }
