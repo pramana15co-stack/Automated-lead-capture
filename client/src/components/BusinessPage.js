@@ -223,6 +223,10 @@ const BusinessPage = ({ businessConfig }) => {
             </button>
           </div>
           <div className="pricing-card">
+            <div className="pricing-offer-badge">
+              <span className="offer-icon">🎉</span>
+              <span className="offer-text">Limited Time Offer - Save 25%</span>
+            </div>
             <div className="pricing-header">
               <h3>Base Automation System</h3>
               <p>Core features to never miss an enquiry</p>
@@ -230,14 +234,20 @@ const BusinessPage = ({ businessConfig }) => {
             <div className="pricing-details">
               <div className="pricing-item">
                 <span className="pricing-label">One-Time Setup</span>
-                <span className="pricing-value">
-                  ${pricing.setup.min} - ${pricing.setup.max}
-                </span>
+                <div className="pricing-value-wrapper">
+                  <span className="pricing-value-old">${Math.round(pricing.setup.min * 1.25)} - ${Math.round(pricing.setup.max * 1.25)}</span>
+                  <span className="pricing-value">
+                    ${pricing.setup.min} - ${pricing.setup.max}
+                  </span>
+                </div>
                 <span className="pricing-note">Includes system design, development, and deployment</span>
               </div>
               <div className="pricing-item">
                 <span className="pricing-label">Monthly Support</span>
-                <span className="pricing-value">${pricing.monthly}</span>
+                <div className="pricing-value-wrapper">
+                  <span className="pricing-value-old">${Math.round(pricing.monthly * 1.25)}</span>
+                  <span className="pricing-value">${pricing.monthly}</span>
+                </div>
                 <span className="pricing-note">Ongoing maintenance, updates, and support</span>
               </div>
             </div>
@@ -258,12 +268,17 @@ const BusinessPage = ({ businessConfig }) => {
             
             <div className="addons-grid">
               <div className="addon-card">
+                <div className="addon-offer-badge">🔥 Popular</div>
                 <div className="addon-icon">📱</div>
                 <h4>Meta Ads Setup</h4>
                 <p className="addon-description">Complete Facebook & Instagram ad campaign setup with automated lead capture integration</p>
                 <div className="addon-pricing">
-                  <span className="addon-price">${currency === 'USD' ? '500' : '750'}</span>
-                  <span className="addon-period">one-time</span>
+                  <span className="addon-price-old">${currency === 'USD' ? '650' : '975'}</span>
+                  <div className="addon-price-wrapper">
+                    <span className="addon-price">${currency === 'USD' ? '500' : '750'}</span>
+                    <span className="addon-period">one-time</span>
+                  </div>
+                  <span className="addon-discount">Save ${currency === 'USD' ? '150' : '225'}</span>
                 </div>
                 <ul className="addon-features">
                   <li>✓ Ad account setup & configuration</li>
@@ -274,16 +289,24 @@ const BusinessPage = ({ businessConfig }) => {
               </div>
 
               <div className="addon-card">
+                <div className="addon-offer-badge">⚡ Best Value</div>
                 <div className="addon-icon">💬</div>
                 <h4>WhatsApp Notification System</h4>
                 <p className="addon-description">Automated WhatsApp notifications for new enquiries, reminders, and follow-ups</p>
                 <div className="addon-pricing">
-                  <span className="addon-price">${currency === 'USD' ? '400' : '600'}</span>
-                  <span className="addon-period">one-time</span>
+                  <span className="addon-price-old">${currency === 'USD' ? '550' : '825'}</span>
+                  <div className="addon-price-wrapper">
+                    <span className="addon-price">${currency === 'USD' ? '400' : '600'}</span>
+                    <span className="addon-period">one-time</span>
+                  </div>
+                  <span className="addon-discount">Save ${currency === 'USD' ? '150' : '225'}</span>
                 </div>
                 <div className="addon-monthly">
-                  <span className="addon-price">+ ${currency === 'USD' ? '50' : '75'}</span>
-                  <span className="addon-period">/month</span>
+                  <span className="addon-price-old">+ ${currency === 'USD' ? '65' : '98'}</span>
+                  <div className="addon-price-wrapper">
+                    <span className="addon-price">+ ${currency === 'USD' ? '50' : '75'}</span>
+                    <span className="addon-period">/month</span>
+                  </div>
                 </div>
                 <ul className="addon-features">
                   <li>✓ WhatsApp Business API setup</li>
@@ -294,16 +317,24 @@ const BusinessPage = ({ businessConfig }) => {
               </div>
 
               <div className="addon-card">
+                <div className="addon-offer-badge">⭐ Premium</div>
                 <div className="addon-icon">🎙️</div>
                 <h4>Voice Assistant System</h4>
                 <p className="addon-description">AI-powered voice assistant for phone enquiries, appointment booking, and customer support</p>
                 <div className="addon-pricing">
-                  <span className="addon-price">${currency === 'USD' ? '800' : '1200'}</span>
-                  <span className="addon-period">one-time</span>
+                  <span className="addon-price-old">${currency === 'USD' ? '1000' : '1500'}</span>
+                  <div className="addon-price-wrapper">
+                    <span className="addon-price">${currency === 'USD' ? '800' : '1200'}</span>
+                    <span className="addon-period">one-time</span>
+                  </div>
+                  <span className="addon-discount">Save ${currency === 'USD' ? '200' : '300'}</span>
                 </div>
                 <div className="addon-monthly">
-                  <span className="addon-price">+ ${currency === 'USD' ? '80' : '120'}</span>
-                  <span className="addon-period">/month</span>
+                  <span className="addon-price-old">+ ${currency === 'USD' ? '100' : '150'}</span>
+                  <div className="addon-price-wrapper">
+                    <span className="addon-price">+ ${currency === 'USD' ? '80' : '120'}</span>
+                    <span className="addon-period">/month</span>
+                  </div>
                 </div>
                 <ul className="addon-features">
                   <li>✓ 24/7 phone answering system</li>

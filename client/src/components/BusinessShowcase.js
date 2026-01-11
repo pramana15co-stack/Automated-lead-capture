@@ -294,13 +294,20 @@ const BusinessShowcase = () => {
                 </div>
 
                 <div className="business-pricing-preview">
+                  <div className="pricing-preview-badge">🎉 Save 25%</div>
                   <div className="pricing-info">
                     <span className="price-label">Setup:</span>
-                    <span className="price-value">${business.pricing.setup.min} - ${business.pricing.setup.max}</span>
+                    <div className="price-value-wrapper">
+                      <span className="price-value-old">${Math.round(business.pricing.setup.min * 1.25)} - ${Math.round(business.pricing.setup.max * 1.25)}</span>
+                      <span className="price-value">${business.pricing.setup.min} - ${business.pricing.setup.max}</span>
+                    </div>
                   </div>
                   <div className="pricing-info">
                     <span className="price-label">Monthly:</span>
-                    <span className="price-value">${business.pricing.monthly}</span>
+                    <div className="price-value-wrapper">
+                      <span className="price-value-old">${Math.round(business.pricing.monthly * 1.25)}</span>
+                      <span className="price-value">${business.pricing.monthly}</span>
+                    </div>
                   </div>
                 </div>
 
